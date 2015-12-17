@@ -9,13 +9,13 @@ ReactDOM.render(<Hello/>, document.getElementById('app'));
 var apiHandler = new ApiHandler();
 
 var start = {
-  time: '',
-  date: ''
+  time: '1400',
+  date: '20151127'
 };
 
 var end = {
-  time: '',
-  date: ''
+  time: '1530',
+  date: '20151127'
 };
 
 apiHandler.getEmergencyCalls(start, end);

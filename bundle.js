@@ -72,13 +72,13 @@
 	var apiHandler = new _apiHandler2.default();
 	
 	var start = {
-	  time: '',
-	  date: ''
+	  time: '1400',
+	  date: '20151127'
 	};
 	
 	var end = {
-	  time: '',
-	  date: ''
+	  time: '1530',
+	  date: '20151127'
 	};
 	
 	apiHandler.getEmergencyCalls(start, end);
@@ -20203,7 +20203,7 @@
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
@@ -20225,17 +20225,14 @@
 	  }
 	
 	  _createClass(ApiHandler, [{
-	    key: 'getEmergencyCalls',
+	    key: "getEmergencyCalls",
 	    value: function getEmergencyCalls(start, end) {
 	      _jquery2.default.ajax({
-	        url: 'http://127.0.0.1:3000/getCalls/' + start.date + '/' + start.time + '/' + end.date + '/' + end.time + '/',
-	        data: {
-	          format: 'json'
-	        },
+	        url: "http://127.0.0.1:3000/getCalls/" + start.date + "/" + start.time + "/" + end.date + "/" + end.time,
 	        error: function error(_error) {
 	          console.log("ERROR!!!");
+	          console.log(_error);
 	        },
-	        dataType: 'jsonp',
 	        success: function success(data) {
 	          console.log("IT WORKED!!!");
 	          console.log(data);
