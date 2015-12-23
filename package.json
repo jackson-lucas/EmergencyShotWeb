@@ -14,7 +14,7 @@
   },
   "scripts": {
     "production": "webpack -p",
-    "dev": "webpack --progress --colors --watch -d",
+    "dev": "webpack-dev-server --content-base build/ --inline --hot --progress --colors --watch -d",
     "test": "jest --watch"
   },
   "author": "Jackson Lima",
@@ -22,8 +22,8 @@
   "license": "",
   "homepage": "",
   "dependencies": {
-    "jquery": "^2.1.4",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "jquery": "~2.1.4",
+    "leaflet": "~0.7.7",
+    "page": "^1.6.4"
   }
 }

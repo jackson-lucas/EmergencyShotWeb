@@ -10,7 +10,7 @@ export default class ApiHandler {
       },
       success: function(data) {
         console.log("IT WORKED!!!");
-        console.log(data);
+        console.log(JSON.stringify(data));
       },
       type: 'GET'
     });
