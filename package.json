@@ -24,6 +24,8 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "leaflet": "~0.7.7",
-    "page": "^1.6.4"
+    "page": "^1.6.4",
+    "router5": "^1.2.2",
+    "vue": "^1.0.13"
   }
 }
