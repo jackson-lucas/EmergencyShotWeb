@@ -2,18 +2,73 @@ import riot from 'riot';
 
 riot.tag('sidebar',
 
-`<nav>
-  <ul class="right hide-on-med-and-down">
-    <li><a href="#!">First Sidebar Link</a></li>
-    <li><a href="#!">Second Sidebar Link</a></li>
-  </ul>
-  <ul id="slide-out" class="side-nav">
-      <li><a href="#!">First Sidebar Link</a></li>
-      <li><a href="#!">Second Sidebar Link</a></li>
-    </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a></i></a>
-</nav>`,
+`<div class="ui visible sidebar inverted vertical menu">
+<div class="item">
+  <b>{options.title}</b>
+</div>
+<div class="item">
+  <div class="header">
+    Modo
+  </div>
+  <div class="menu">
+    <a class="active item" href="#">
+    {options.pages[0]}
+    </a>
+    <a class="item" href="#">
+    {options.pages[1]}
+    </a>
+  </div>
+</div>
+<div class="item">
+  <div class="ui top right attached label">Filtrar Chamadas</div>
+  <div id="drop" class="ui floating labeled icon dropdown button">
+    <i class="filter icon"></i>
+    <span class="text">Filtrar por horas</span>
+    <div class="menu">
+      <div class="header">
+        Chamadas de até
+      </div>
+      <div class="divider"></div>
+      <div class="item">
+        <span class="description">hora atrás</span>
+        <span class="text">1</span>
+      </div>
+      <div class="item">
+        <span class="description">horas atrás</span>
+        <span class="text">2</span>
+      </div>
+      <div class="item">
+        <span class="description">horas atrás</span>
+        <span class="text">3</span>
+      </div>
+      <div class="item">
+        <span class="description">horas atrás</span>
+        <span class="text">4</span>
+      </div>
+      <div class="item">
+        <span class="description">horas atrás</span>
+        <span class="text">5</span>
+      </div>
+      <div class="item">
+        <span class="description">horas atrás</span>
+        <span class="text">6</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="pusher">
+  <div class="bottom aligned item">Feito por <a href="#">EmergencyShot</a></div>
+</div>`,
 
 function constructor(options) {
   this.options = options;
+
+  this.on('mount', function() {
+    $('.ui.dropdown').dropdown({'set selected': '1'});
+
+    $('#drop').on('click', function () {
+      console.log($('.ui.dropdown').dropdown('get value'));
+    });
+  }.bind(this));
 });

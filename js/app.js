@@ -3,8 +3,8 @@ import Riot from 'riot';
 import app from './UiComponents/sidebar.js';
 
 
-// DOING:0 create component sidebar
-// TODO CSS framework must have table, dialog, dropdown(select), sidebar
+// DONE:0 create component sidebar
+// DONE:10 CSS framework must have table, dialog, dropdown(select), sidebar
 // TODO:10 create component map
 // TODO:0 create a initial page with sidebar and map
 // TODO:50 get api call and join with map
