@@ -17,8 +17,12 @@ function constructor(options) {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
+    var markers = L.markerClusterGroup();
+    markers.addLayer(L.marker([51.5, -0.09]));
+    markers.addLayer(L.marker([51.5, -0.19]));
+    markers.addLayer(L.marker([51.5, -0.29]));
+    markers.addLayer(L.marker([51.6, -0.39]));
+    markers.addLayer(L.marker([51.5, -0.49]));
+    map.addLayer(markers);
   }.bind(this));
 });
