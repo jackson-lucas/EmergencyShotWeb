@@ -3,7 +3,6 @@ module.exports = {
   output: {
     filename: 'build/bundle.js'
   },
-
   module: {
     loaders: [
       {
