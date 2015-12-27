@@ -1,7 +1,7 @@
 import riot from 'riot';
 
 // WARNING leaflet from npm is not working. Workaround is use global direct in html file.
-// TODO [LOW] Get leaflet link in html file and download file then import by the file.
+// TODO:0 [LOW] Get leaflet link in html file and download file then import by the file.
 
 riot.tag('map',
 

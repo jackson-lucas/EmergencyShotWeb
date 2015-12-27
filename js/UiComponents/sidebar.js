@@ -63,7 +63,7 @@ riot.tag('sidebar',
 
 function constructor(options) {
   this.options = options;
-
+  
   this.on('mount', function() {
     $('.ui.dropdown').dropdown({'set selected': '1'});
 
