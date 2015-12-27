@@ -19,8 +19,6 @@
   "license": "",
   "homepage": "",
   "dependencies": {
-    "jquery": "~2.1.4",
-    "leaflet": "^0.7.7",
     "page": "^1.6.4",
     "riot": "^2.3.12",
     "semantic-ui": "^2.1.7"
