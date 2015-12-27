@@ -58,7 +58,7 @@ riot.tag('sidebar',
   </div>
 </div>
 <div class="pusher">
-  <div class="bottom aligned item">Feito por <a href="#">EmergencyShot</a></div>
+  <div class="bottom aligned item">Copyright (C) 2015</div>
 </div>`,
 
 function constructor(options) {
