@@ -1,4 +1,6 @@
 import riot from 'riot';
+import './map.js';
+import './table.js';
 
 riot.tag('content',
 
