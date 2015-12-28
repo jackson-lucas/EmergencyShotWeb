@@ -2,9 +2,13 @@
   width: 20% !important;
 }
 
-#map {
+.my_content {
   width: 80%;
   float: right;
+  height: 100%;
+}
+
+#map {
   height: 100%;
 }
 

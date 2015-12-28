@@ -61,9 +61,12 @@ riot.tag('sidebar',
   <div class="bottom aligned item">Copyright (C) 2015</div>
 </div>`,
 
+// TODO:0 filter must work returning results to map and alerting user about actual state
 function constructor(options) {
   this.options = options;
-  
+
+
+
   this.on('mount', function() {
     $('.ui.dropdown').dropdown({'set selected': '1'});
 
