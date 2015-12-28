@@ -1,4 +1,6 @@
 import riot from 'riot';
+import Router from './Components/router.js';
+
 import './UiComponents/sidebar.js';
 import './UiComponents/map.js';
 import './UiComponents/content.js';
@@ -24,4 +26,4 @@ function constructor(options) {
   console.log(options);
 });
 
-riot.mount('app', { title: 'EmergencyShot', pages: ['Mapa', 'Tabela'], show_map: true });
+var router = new Router();
