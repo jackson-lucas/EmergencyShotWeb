@@ -2,7 +2,7 @@ import riot from 'riot';
 
 riot.tag('dropdown',
 
-`<div id="drop" class="ui floating labeled icon dropdown button">
+`<div class="ui floating labeled icon dropdown button">
   <i class="filter icon"></i>
   <span class="text">Filtrar por horas</span>
   <div class="menu">
@@ -44,7 +44,7 @@ function constructor(options) {
   this.on('mount', function() {
     $('.ui.dropdown').dropdown();
 
-    $('#drop').on('click', function () {
+    $('.ui.dropdown.button').on('click', function () {
       console.log($('.ui.dropdown').dropdown('get value'));
     });
   }.bind(this));
