@@ -1,12 +1,14 @@
 /*
-This is an interface(with singleton characteristic),
- since the interface only have members(not methods),
- it makes more sense just have one interface for everyone
+This is an interface
 */
-class Action {
-  const ON_SELECT_FILTER: 'ON_SELECT_FILTER';
-}
+const ACTION = (function() {
+  const ON_SELECT_FILTER = 'ON_SELECT_FILTER';
+  const ON_ROUTE_CHANGE = 'ON_ROUTE_CHANGE';
+  // TODO [TEST] if action can not be changed
+  return {
+    'ON_SELECT_FILTER': ON_SELECT_FILTER,
+    'ON_ROUTE_CHANGE': ON_ROUTE_CHANGE
+  }
+})();
 
-const ACTION = new Action();
-
-export ACTION;
+export default ACTION;

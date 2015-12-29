@@ -44,7 +44,7 @@ function constructor(options) {
   this.on('mount', function() {
     $('.ui.dropdown').dropdown();
 
-    // TODO [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
+    // TODO:0 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
     $('.ui.dropdown.button').on('click', function () {
       console.log($('.ui.dropdown').dropdown('get value'));
     });

@@ -1,22 +1,35 @@
-import ACTION from './Action.js';
-
 // This is a singleton cause there must be only one Dispatcher for everyone.
-class Dispatcher {
-  constructor() {
-    this.stores = [];
-  }
 
-  addStore(store) {
-    this.stores.push(store);
-  }
+// Besides by now Dispatcher seems strange but gives space for improvement,
+// instead of connecting view directly to store
 
-  trigger(action, data) {
-    for(let index = 0; index < this.stores.length; index++) {
-      this.stores[index].trigger(action, data);
+let dispatcher = (function () {
+  let stores = [];
+
+  function addStore(store) {
+    console.log("store added");
+    stores.push(store);
+  };
+
+  function on(action, data) {
+    console.log("called received");
+    console.log(stores);
+    for(let index = 0; index < stores.length; index++) {
+      console.log(stores[index] + "received");
+      stores[index].dispatch(action, data);
     }
+  };
+
+  function dispatch(action, data) {
+    console.log("calling on");
+    on(action, data);
+  };
+
+  return {
+    'on': on,
+    'addStore': addStore,
+    'dispatch': dispatch
   }
-}
+})();
 
-let dispatcher = new Dispatcher();
-
-export dispatcher;
+export default dispatcher;

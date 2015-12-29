@@ -5,17 +5,13 @@ riot.tag('sidebar',
 
 `<div class="ui visible sidebar inverted vertical menu">
 <div class="item">
-  <b>{options.title}</b>
+  <b>EmergencyShot</b>
 </div>
 <div class="item">
   <div class="ui top left attached label">Modo</div>
   <div class="menu">
-    <a class="active item" href="#">
-    {options.pages[0]}
-    </a>
-    <a class="item" href="#">
-    {options.pages[1]}
-    </a>
+    <a class="active item" href="#">Mapa</a>
+    <a class="item" href="#">Tabela</a>
   </div>
 </div>
 <div class="item">
@@ -25,7 +21,6 @@ riot.tag('sidebar',
 <div class="pusher">
   <div class="bottom aligned item">Copyright (C) 2015</div>
 </div>`,
-
 // DOING:0 filter must work returning results to map and alerting user about actual state
 function constructor(options) {
   this.options = options;
