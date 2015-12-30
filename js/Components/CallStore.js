@@ -21,6 +21,8 @@ export default class CallStore extends Store {
 
     switch (action) {
       case ACTION.ON_ROUTE_CHANGE:
+        console.log("data");
+        console.log(data);
         this.data.show_map = data.show_map;
         this.routeChanged(this.data.show_map);
         break;

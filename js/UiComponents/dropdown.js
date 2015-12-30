@@ -45,6 +45,7 @@ function constructor(options) {
     $('.ui.dropdown').dropdown();
 
     // TODO:0 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
+    // TODO:30 dispatch ON_SELECT_FILTER with the time to be queried.
     $('.ui.dropdown.button').on('click', function () {
       console.log($('.ui.dropdown').dropdown('get value'));
     });

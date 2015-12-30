@@ -10,8 +10,8 @@ riot.tag('sidebar',
 <div class="item">
   <div class="ui top left attached label">Modo</div>
   <div class="menu">
-    <a class="active item" href="#">Mapa</a>
-    <a class="item" href="#">Tabela</a>
+    <a class="{ options.show_map ? 'active' : ''} item" href="#!/">Mapa</a>
+    <a class="{ !options.show_map ? 'active' : ''} item" href="#!/table">Tabela</a>
   </div>
 </div>
 <div class="item">
@@ -21,7 +21,11 @@ riot.tag('sidebar',
 <div class="pusher">
   <div class="bottom aligned item">Copyright (C) 2015</div>
 </div>`,
+
 // DOING:0 filter must work returning results to map and alerting user about actual state
+// TODO:10 [LOW] change theme to a more proper way for emergency call system
+// DONE:0 change mode when clicked to. Also change active item when this happens.
 function constructor(options) {
-  this.options = options;
+  this.options = options
+  console.log(options);
 });

@@ -11,7 +11,7 @@ import ACTION from './Action.js';
 // Router should be inside store? since store is the one handling logic
 export default class Router {
   constructor() {
-    // DONE:0 [TEST] if connection with dispatcher and store.
+    // DONE:10 [TEST] if connection with dispatcher and store.
 
     page.base('/#!');
 
@@ -21,10 +21,12 @@ export default class Router {
   }
 
   map() {
+    console.log("map");
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': true});
   }
 
   table() {
+    console.log("table");
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': false});
   }
 }
