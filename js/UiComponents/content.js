@@ -6,8 +6,8 @@ riot.tag('content',
 
 `
 <div class="my_content">
-  <map show={options.show_map}></map>
-  <table hide={options.show_map}></table>
+  <map data="{options.data}" show={options.data.show_map}></map>
+  <table calls="{options.data.calls}" hide={options.data.show_map}></table>
 </div>`,
 
 function constructor(options) {

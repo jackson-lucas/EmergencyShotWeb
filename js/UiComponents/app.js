@@ -15,7 +15,7 @@ import './content.js';
 riot.tag('app',
 
 `<sidebar></sidebar>
-<content show_map="{options.show_map}"></content>`,
+<content data="{options.data}"></content>`,
 
 function constructor(options) {
   this.options = options;

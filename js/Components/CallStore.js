@@ -8,7 +8,12 @@ export default class CallStore extends Store {
 
   constructor() {
     super();
-    this.calls = [];
+    this.data = {};
+    this.data.calls = [{lat:51.505, lon:-0.09}, {lat:51.505, lon:-0.19}, {lat:51.505, lon:-0.29}, {lat:51.515, lon:-0.09}];
+    // Underscore must be used when passing parameters to UI(RiotJS limitation).
+    this.data.show_map = true;
+    this.data.defaultZoom = 13;
+    this.data.defaultPosition = [51.505, -0.09];
   }
 
   on(action, data) {
@@ -16,18 +21,17 @@ export default class CallStore extends Store {
 
     switch (action) {
       case ACTION.ON_ROUTE_CHANGE:
-        this.routeChanged(data.show_map);
+        this.data.show_map = data.show_map;
+        this.routeChanged(this.data.show_map);
         break;
       default:
 
     }
   }
 
-  // Underscore must be used when passing parameters to UI(RiotJS limitation).
+
   routeChanged(mode) {
-    let tag = riot.mount('app',
-      { 'calls': this.calls,
-      'show_map': mode });
+    let tag = riot.mount('app', { 'data': this.data });
 
     this.setView(tag);
   }

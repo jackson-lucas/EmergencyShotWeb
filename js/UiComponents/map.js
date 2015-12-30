@@ -10,19 +10,21 @@ riot.tag('map',
 function constructor(options) {
   this.options = options;
 
+  // TODO convention a way to update the markers properly (this.on('update'))
   this.on('mount', function() {
-    let map = L.map('map').setView([51.505, -0.09], 13);
+    let map = L.map('map').setView(this.options.data.defaultPosition,
+       this.options.data.defaultZoom);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     var markers = L.markerClusterGroup();
-    markers.addLayer(L.marker([51.5, -0.09]));
-    markers.addLayer(L.marker([51.5, -0.19]));
-    markers.addLayer(L.marker([51.5, -0.29]));
-    markers.addLayer(L.marker([51.6, -0.39]));
-    markers.addLayer(L.marker([51.5, -0.49]));
+    let calls = this.options.data.calls;
+    for(let index = 0; index < calls.length; index++) {
+      let call = calls[index];
+      markers.addLayer(L.marker([call.lat, call.lon]));
+    }
     map.addLayer(markers);
   }.bind(this));
 });
