@@ -52,7 +52,7 @@ function constructor(options) {
 
       this.value = newValue;
 
-      dispatcher.dispatch(ACTION.ON_SELECT_FILTER, this.value);
+      dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': this.value});
       console.log("Dispatched: " + ACTION.ON_SELECT_FILTER);
     }
   }
@@ -62,7 +62,7 @@ function constructor(options) {
     $('.ui.dropdown').dropdown();
 
     // TODO:0 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-    // DOING:10 dispatch ON_SELECT_FILTER with the time to be queried.
+    // DONE:0 dispatch ON_SELECT_FILTER with the time to be queried.
 
 
   }.bind(this));

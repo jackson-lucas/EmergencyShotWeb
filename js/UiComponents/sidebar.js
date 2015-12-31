@@ -24,7 +24,7 @@ riot.tag('sidebar',
 
 // DOING:0 filter must work returning results to map and alerting user about actual state
 // TODO:20 [LOW] change theme to a more proper way for emergency call system
-// DONE:0 change mode when clicked to. Also change active item when this happens.
+// DONE:10 change mode when clicked to. Also change active item when this happens.
 function constructor(options) {
   this.options = options
   console.log(options);
