@@ -49,7 +49,10 @@ function constructor(options) {
     let newValue = selected.first().text();
 
     if(newValue && newValue != this.value) {
-      dispatcher.dispatch(ACTION.ON_SELECT_FILTER);
+
+      this.value = newValue;
+
+      dispatcher.dispatch(ACTION.ON_SELECT_FILTER, this.value);
       console.log("Dispatched: " + ACTION.ON_SELECT_FILTER);
     }
   }
