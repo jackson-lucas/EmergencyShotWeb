@@ -40,7 +40,12 @@ export default class CallStore extends Store {
       case ACTION.ON_DATA_RECEIVED:
         console.log(data.calls);
         this.data.calls = data.calls;
-        this.listener.update({ 'data': this.data });
+        //riot.update();
+
+        //this.listener.update({ 'data': this.data });
+        // This is a workaround. Correct way is by update but it's not working
+        // TODO INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated?
+        riot.mount('app', { 'data': this.data });
         console.log(this.listener);
         // TODO TEST if listener is updated
         // TODO REFACTOR app architecture about event vs observe, listener vs view and apiHandlers
