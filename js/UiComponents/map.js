@@ -10,7 +10,7 @@ riot.tag('map',
 function constructor(options) {
   this.options = options;
 
-  // TODO:20 convention a way to update the markers properly (this.on('update'))
+  // TODO:30 convention a way to update the markers properly (this.on('update'))
   this.on('mount', function() {
     let map = L.map('map').setView(this.options.data.defaultPosition,
        this.options.data.defaultZoom);

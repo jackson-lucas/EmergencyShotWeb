@@ -1,8 +1,10 @@
 import riot from 'riot';
+import dispatcher from '../Components/dispatcher.js';
+import ACTION from '../Components/Action.js';
 
 riot.tag('dropdown',
 
-`<div class="ui floating labeled icon dropdown button">
+`<div onclick="{onSelectFilter}" class="ui floating labeled icon dropdown button">
   <i class="filter icon"></i>
   <span class="text">Filtrar por horas</span>
   <div class="menu">
@@ -40,14 +42,25 @@ riot.tag('dropdown',
 
 function constructor(options) {
   this.options = options;
+  this.value = '';
+
+  this.onSelectFilter = function onSelectFilter() {
+    let selected = $('.selected > .text');
+    let newValue = selected.first().text();
+
+    if(newValue && newValue != this.value) {
+      dispatcher.dispatch(ACTION.ON_SELECT_FILTER);
+      console.log("Dispatched: " + ACTION.ON_SELECT_FILTER);
+    }
+  }
 
   this.on('mount', function() {
+
     $('.ui.dropdown').dropdown();
 
     // TODO:0 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-    // TODO:30 dispatch ON_SELECT_FILTER with the time to be queried.
-    $('.ui.dropdown.button').on('click', function () {
-      console.log($('.ui.dropdown').dropdown('get value'));
-    });
+    // DOING:10 dispatch ON_SELECT_FILTER with the time to be queried.
+
+
   }.bind(this));
 });

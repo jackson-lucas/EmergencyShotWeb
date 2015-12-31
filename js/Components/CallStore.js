@@ -6,6 +6,7 @@ import '../UiComponents/app.js';
 
 export default class CallStore extends Store {
 
+  // TODO:10 set default position to Manaus and give proper default zoom to see the whole city.
   constructor() {
     super();
     this.data = {};
