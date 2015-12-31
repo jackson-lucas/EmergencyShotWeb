@@ -7,7 +7,7 @@ import '../UiComponents/app.js';
 
 export default class CallStore extends Store {
 
-  // TODO:10 set default position to Manaus and give proper default zoom to see the whole city.
+  // TODO:30 set default position to Manaus and give proper default zoom to see the whole city.
   constructor() {
     super();
 
@@ -36,6 +36,12 @@ export default class CallStore extends Store {
       case ACTION.REGISTER_LISTENER:
         this.addListener(data.listener);
         break;
+      case ACTION.ON_DATA_RECEIVED:
+        this.data.calls = data.calls;
+        this.listener.update();
+        // TODO TEST if listener is updated
+        // TODO REFACTOR app architecture about event vs observe, listener vs view and apiHandlers
+        break;
       default:
 
     }
@@ -48,7 +54,7 @@ export default class CallStore extends Store {
 
   routeChanged(mode) {
     let tag = riot.mount('app', { 'data': this.data });
-    // TODO INVESTIGATE should mount just on first and then update?
-    this.addListener(tag);
+    // TODO:0 INVESTIGATE should mount just on first and then update?
+    this.setListener(tag);
   }
 }

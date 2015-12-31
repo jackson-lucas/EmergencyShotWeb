@@ -1,7 +1,7 @@
 import riot from 'riot';
 
 // WARNING leaflet from npm is not working. Workaround is use global direct in html file.
-// DONE:60 [LOW] Get leaflet link in html file and download file then import by the file.
+// DONE:70 [LOW] Get leaflet link in html file and download file then import by the file.
 
 riot.tag('map',
 
@@ -10,7 +10,7 @@ riot.tag('map',
 function constructor(options) {
   this.options = options;
 
-  // TODO:30 convention a way to update the markers properly (this.on('update'))
+  // DOING:0 convention a way to update the markers properly (this.on('update'))
   this.on('mount', function() {
     let map = L.map('map').setView(this.options.data.defaultPosition,
        this.options.data.defaultZoom);

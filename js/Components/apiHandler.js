@@ -49,10 +49,13 @@ export default class ApiHandler {
       error: function(error) {
         console.log("ERROR!!!");
         console.log(error);
+        dispatcher.dispatch(ACTION.ON_DATA_ERROR);
       },
-      success: function(data) {
+      success: function(calls) {
         console.log("IT WORKED!!!");
-        console.log(JSON.stringify(data));
+        console.log(JSON.stringify(calls));
+        // DONE:0 return calls to Store to store update calls
+        dispatcher.dispatch(ACTION.ON_DATA_RECEIVED, {'calls': calls});
       },
       type: 'GET'
     });
