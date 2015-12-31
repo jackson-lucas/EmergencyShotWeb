@@ -1,8 +1,5 @@
 // This is a singleton cause there must be only one Dispatcher for everyone.
 
-// Besides by now Dispatcher seems strange but gives space for improvement,
-// instead of connecting view directly to store
-
 let dispatcher = (function () {
   let stores = [];
 

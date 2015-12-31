@@ -8,13 +8,20 @@ A Store is supposed to trigger only one view. If a second view is necessary,
   events handlers in subcomponents.
 */
 // Comparing with MVC, Store is the Controller.
+
+// TODO [REFACTOR] eliminate on() in Store and others components. All components just dispatch.
+
+/*
+ WARNING this implementation do not cover dynamic components that don't listen
+ anymore. If this one day be necessary, it must be implemented. YAGNI principle.
+ */
 export default class Store {
   constructor() {
-    this.view = null;
+    this.listeners = [];
   }
 
-  setView(view) {
-    this.view = view;
+  addListener(listener) {
+    this.listeners.push(listener);
   }
 
   dispatch(action, data) {
@@ -23,10 +30,5 @@ export default class Store {
 
   on(action, data) {
 
-
-    if(this.view) {
-      // Riot way to trigger view update
-      this.view.update();
-    }
   }
 }
