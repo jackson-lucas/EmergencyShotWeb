@@ -7,7 +7,7 @@ import '../UiComponents/app.js';
 
 export default class CallStore extends Store {
 
-  // TODO:30 set default position to Manaus and give proper default zoom to see the whole city.
+  // TODO:40 set default position to Manaus and give proper default zoom to see the whole city.
   constructor() {
     super();
 
@@ -44,11 +44,11 @@ export default class CallStore extends Store {
 
         //this.listener.update({ 'data': this.data });
         // This is a workaround. Correct way is by update but it's not working
-        // TODO INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated?
+        // TODO:0 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated?
         riot.mount('app', { 'data': this.data });
         console.log(this.listener);
-        // TODO TEST if listener is updated
-        // TODO REFACTOR app architecture about event vs observe, listener vs view and apiHandlers
+        // DONE:0 TEST if listener is updated
+        // TODO:20 REFACTOR app architecture about event vs observe, listener vs view and apiHandlers
         break;
       default:
 
@@ -62,7 +62,7 @@ export default class CallStore extends Store {
 
   routeChanged(mode) {
     let tag = riot.mount('app', { 'data': this.data });
-    // TODO:0 INVESTIGATE should mount just on first and then update?
+    // TODO:10 INVESTIGATE should mount just on first and then update?
     this.setListener(tag[0]);
   }
 }

@@ -61,8 +61,8 @@ function constructor(options) {
 
     $('.ui.dropdown').dropdown();
 
-    // DONE:10 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-    // DONE:30 dispatch ON_SELECT_FILTER with the time to be queried.
+    // DONE:40 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
+    // DONE:60 dispatch ON_SELECT_FILTER with the time to be queried.
 
 
   }.bind(this));
