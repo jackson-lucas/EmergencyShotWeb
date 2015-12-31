@@ -9,7 +9,7 @@ A Store is supposed to trigger only one view. If a second view is necessary,
 */
 // Comparing with MVC, Store is the Controller.
 
-// TODO:20 [REFACTOR] eliminate on() in Store and others components. All components just dispatch.
+// TODO:30 [REFACTOR] eliminate on() in Store and others components. All components just dispatch.
 
 /*
  WARNING this implementation do not cover dynamic components that don't listen

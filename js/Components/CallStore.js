@@ -17,6 +17,7 @@ export default class CallStore extends Store {
     this.data.show_map = true;
     this.data.defaultZoom = 13;
     this.data.defaultPosition = [51.505, -0.09];
+    //this.data.defaultPosition = [-3.119028, -60.021731];
   }
 
   on(action, data) {
@@ -39,7 +40,7 @@ export default class CallStore extends Store {
       case ACTION.ON_DATA_RECEIVED:
         console.log(data.calls);
         this.data.calls = data.calls;
-        riot.update();
+        this.listener.update({ 'data': this.data });
         console.log(this.listener);
         // TODO TEST if listener is updated
         // TODO REFACTOR app architecture about event vs observe, listener vs view and apiHandlers
@@ -57,6 +58,6 @@ export default class CallStore extends Store {
   routeChanged(mode) {
     let tag = riot.mount('app', { 'data': this.data });
     // TODO:0 INVESTIGATE should mount just on first and then update?
-    this.setListener(tag);
+    this.setListener(tag[0]);
   }
 }
