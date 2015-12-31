@@ -44,7 +44,7 @@ export default class CallStore extends Store {
 
         //this.listener.update({ 'data': this.data });
         // This is a workaround. Correct way is by update but it's not working
-        // TODO:0 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated?
+        // TODO:0 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated? maybe create our own update(dispatch).
         riot.mount('app', { 'data': this.data });
         console.log(this.listener);
         // DONE:0 TEST if listener is updated
