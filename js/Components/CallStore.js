@@ -37,8 +37,10 @@ export default class CallStore extends Store {
         this.addListener(data.listener);
         break;
       case ACTION.ON_DATA_RECEIVED:
+        console.log(data.calls);
         this.data.calls = data.calls;
-        this.listener.update();
+        riot.update();
+        console.log(this.listener);
         // TODO TEST if listener is updated
         // TODO REFACTOR app architecture about event vs observe, listener vs view and apiHandlers
         break;
@@ -47,9 +49,9 @@ export default class CallStore extends Store {
     }
   }
 
-  onSelectFilter() {
+  onSelectFilter(filter) {
     let apiHandler = new ApiHandler();
-    apiHandler.getEmergencyCalls();
+    apiHandler.getEmergencyCalls(filter);
   }
 
   routeChanged(mode) {
