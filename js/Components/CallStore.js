@@ -12,7 +12,8 @@ export default class CallStore extends Store {
     super();
 
     this.data = {};
-    this.data.calls = [{lat:51.505, lon:-0.09}, {lat:51.505, lon:-0.19}, {lat:51.505, lon:-0.29}, {lat:51.515, lon:-0.09}];
+    this.data.calls = [
+      {data:"11-27-2015",horario:"15:15:00",lat:"-3.116528",lon:"-60.021731",id_sinistro:"1"}, {data:"11-27-2015",horario:"15:15:00",lat:"-3.116528",lon:"-60.021731",id_sinistro:"1"}, {data:"11-27-2015",horario:"15:15:00",lat:"-3.116528",lon:"-60.021731",id_sinistro:"1"}];
     // Underscore must be used when passing parameters to UI(RiotJS limitation).
     this.data.show_map = true;
     this.data.defaultZoom = 13;
