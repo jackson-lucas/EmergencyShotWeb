@@ -1,26 +1,29 @@
 import riot from 'riot';
 import Store from './Store.js';
-import ACTION from './Action.js';
+import ACTION from './ACTION.js';
 import ApiHandler from './ApiHandler.js';
 
 import '../UiComponents/app.js';
 
 export default class CallStore extends Store {
 
-  // TODO get address from lat and lon and add to each object after an update
-  // TODO decode each image after an update
-  // TODO:40 set default position to Manaus and give proper default zoom to see the whole city.
+  // TODO:30 get address from lat and lon and add to each object after an update
+  // TODO:20 decode each image after an update
+  // TODO:10 on click link of image, show image in modal(popup like)
+  // DOING:0 create sinister's list
+  // DONE:0 set default position to Manaus and give proper default zoom to see the whole city.
   constructor() {
     super();
 
     this.data = {};
+
+    this.data.callSelected = {};
     this.data.calls = [
       {data:"11-27-2015",horario:"15:15:00",lat:"-3.116528",lon:"-60.031731",id_sinistro:"1"}, {data:"11-27-2015",horario:"16:00:00",lat:"-3.113528",lon:"-60.021731",id_sinistro:"2"}, {data:"11-27-2015",horario:"23:10:00",lat:"-3.110528",lon:"-60.001731",id_sinistro:"1"}];
     // Underscore must be used when passing parameters to UI(RiotJS limitation).
     this.data.show_map = true;
     this.data.defaultZoom = 13;
     this.data.defaultPosition = [-3.113528, -60.031731];
-    //this.data.defaultPosition = [-3.119028, -60.021731];
   }
 
   on(action, data) {
@@ -50,8 +53,12 @@ export default class CallStore extends Store {
         // TODO:0 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated? maybe create our own update(dispatch).
         riot.mount('app', { 'data': this.data });
         console.log(this.listener);
-        // DONE:0 TEST if listener is updated
-        // TODO:20 REFACTOR app architecture about event vs observe, listener vs view and apiHandlers
+        // DONE:20 TEST if listener is updated
+        // TODO:50 REFACTOR app architecture use Publish/Subscribe Pattern
+        break;
+      case ACTION.ON_CALL_SELECTED:
+        this.data.callSelected = data.callSelected;
+        riot.mount('app', { 'data': this.data });
         break;
       default:
 
@@ -65,7 +72,7 @@ export default class CallStore extends Store {
 
   routeChanged(mode) {
     let tag = riot.mount('app', { 'data': this.data });
-    // TODO:10 INVESTIGATE should mount just on first and then update?
+    // TODO:40 INVESTIGATE should mount just on first and then update?
     this.setListener(tag[0]);
   }
 }

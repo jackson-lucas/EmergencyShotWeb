@@ -1,4 +1,4 @@
-import ACTION from './Action.js';
+import ACTION from './ACTION.js';
 import dispatcher from './dispatcher.js';
 
 export default class ApiHandler {
@@ -42,7 +42,7 @@ export default class ApiHandler {
     let year = date.getFullYear();
     let minutes = this.dateToString(date.getMinutes());
     let hours = this.dateToString(date.getHours());
-    // DONE:30 FIX Secons Pattern 2 seconds to 02 seconds
+    // DONE:50 FIX Secons Pattern 2 seconds to 02 seconds
     let seconds = this.dateToString(date.getSeconds());
 
     dateApi.date = `${month}-${day}-${year}`;
@@ -70,7 +70,7 @@ export default class ApiHandler {
       success: function(calls) {
         console.log("IT WORKED!!!");
         console.log(JSON.stringify(calls));
-        // DONE:50 return calls to Store to store update calls
+        // DONE:70 return calls to Store to store update calls
         dispatcher.dispatch(ACTION.ON_DATA_RECEIVED, {'calls': calls});
       },
       type: 'GET'

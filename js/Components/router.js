@@ -1,7 +1,7 @@
 import page from 'page';
 import riot from 'riot';
 import dispatcher from './dispatcher.js';
-import ACTION from './Action.js';
+import ACTION from './ACTION.js';
 
 // Router should be the one initializing store and dispatcher?
 // Store should be only one to all app or divided
@@ -11,7 +11,7 @@ import ACTION from './Action.js';
 // Router should be inside store? since store is the one handling logic
 export default class Router {
   constructor() {
-    // DONE:80 [TEST] if connection with dispatcher and store.
+    // DONE:100 [TEST] if connection with dispatcher and store.
 
     page.base('/#!');
 

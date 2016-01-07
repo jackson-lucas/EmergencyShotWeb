@@ -1,6 +1,6 @@
 import riot from 'riot';
 import dispatcher from '../Components/dispatcher.js';
-import ACTION from '../Components/Action.js';
+import ACTION from '../Components/ACTION.js';
 
 riot.tag('dropdown',
 
@@ -61,8 +61,8 @@ function constructor(options) {
 
     $('.ui.dropdown').dropdown();
 
-    // DONE:40 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-    // DONE:60 dispatch ON_SELECT_FILTER with the time to be queried.
+    // DONE:60 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
+    // DONE:80 dispatch ON_SELECT_FILTER with the time to be queried.
 
 
   }.bind(this));
