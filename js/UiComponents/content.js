@@ -1,6 +1,6 @@
 import riot from 'riot';
 import './map.js';
-import './callstable.js';
+import './callsTable.js';
 
 riot.tag('content',
 

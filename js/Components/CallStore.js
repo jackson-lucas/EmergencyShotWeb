@@ -7,6 +7,8 @@ import '../UiComponents/app.js';
 
 export default class CallStore extends Store {
 
+  // TODO get address from lat and lon and add to each object after an update
+  // TODO decode each image after an update
   // TODO:40 set default position to Manaus and give proper default zoom to see the whole city.
   constructor() {
     super();
@@ -17,7 +19,7 @@ export default class CallStore extends Store {
     // Underscore must be used when passing parameters to UI(RiotJS limitation).
     this.data.show_map = true;
     this.data.defaultZoom = 13;
-    this.data.defaultPosition = [51.505, -0.09];
+    this.data.defaultPosition = [-3.113528, -60.031731];
     //this.data.defaultPosition = [-3.119028, -60.021731];
   }
 

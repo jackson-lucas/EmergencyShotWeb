@@ -28,11 +28,6 @@ riot.tag('calls-table',
   </tbody>
 </table>`,
 
-// TODO try create table dinamically through .tag file. if not work jQuery on mount.
-// TODO after work, try replicate problem and report on riot js github issues
 function constructor(options) {
   this.options = options;
-
-  console.log(this.options);
-  console.log("options.calls[0]");
 });
