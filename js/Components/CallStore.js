@@ -13,7 +13,7 @@ export default class CallStore extends Store {
 
     this.data = {};
     this.data.calls = [
-      {data:"11-27-2015",horario:"15:15:00",lat:"-3.116528",lon:"-60.021731",id_sinistro:"1"}, {data:"11-27-2015",horario:"15:15:00",lat:"-3.116528",lon:"-60.021731",id_sinistro:"1"}, {data:"11-27-2015",horario:"15:15:00",lat:"-3.116528",lon:"-60.021731",id_sinistro:"1"}];
+      {data:"11-27-2015",horario:"15:15:00",lat:"-3.116528",lon:"-60.031731",id_sinistro:"1"}, {data:"11-27-2015",horario:"16:00:00",lat:"-3.113528",lon:"-60.021731",id_sinistro:"2"}, {data:"11-27-2015",horario:"23:10:00",lat:"-3.110528",lon:"-60.001731",id_sinistro:"1"}];
     // Underscore must be used when passing parameters to UI(RiotJS limitation).
     this.data.show_map = true;
     this.data.defaultZoom = 13;
