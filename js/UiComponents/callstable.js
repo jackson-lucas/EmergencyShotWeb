@@ -49,7 +49,7 @@ function constructor(options) {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log(arguments);
     dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]});
-    $('.fullscreen.modal')
+    $('#modal')
       .modal('setting', 'transition', 'horizontal flip')
       .modal('show');
   };
