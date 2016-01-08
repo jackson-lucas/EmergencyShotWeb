@@ -7,11 +7,11 @@ import '../UiComponents/app.js';
 
 export default class CallStore extends Store {
 
-  // TODO:30 get address from lat and lon and add to each object after an update
-  // TODO:20 decode each image after an update
-  // TODO:10 on click link of image, show image in modal(popup like)
-  // DOING:0 create sinister's list
-  // DONE:0 set default position to Manaus and give proper default zoom to see the whole city.
+  // TODO:20 get address from lat and lon and add to each object after an update
+  // TODO:10 decode each image after an update
+  // DONE:10 on click link of image, show image in modal(popup like)
+  // DONE:0 create sinister's list
+  // DONE:20 set default position to Manaus and give proper default zoom to see the whole city.
   constructor() {
     super();
 
@@ -53,8 +53,8 @@ export default class CallStore extends Store {
         // TODO:0 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated? maybe create our own update(dispatch).
         riot.mount('app', { 'data': this.data });
         console.log(this.listener);
-        // DONE:20 TEST if listener is updated
-        // TODO:50 REFACTOR app architecture use Publish/Subscribe Pattern
+        // DONE:60 TEST if listener is updated
+        // TODO:40 REFACTOR app architecture use Publish/Subscribe Pattern
         break;
       case ACTION.ON_CALL_SELECTED:
         this.data.callSelected = data.call_selected;
@@ -72,7 +72,7 @@ export default class CallStore extends Store {
 
   routeChanged(mode) {
     let tag = riot.mount('app', { 'data': this.data });
-    // TODO:40 INVESTIGATE should mount just on first and then update?
+    // TODO:30 INVESTIGATE should mount just on first and then update?
     this.setListener(tag[0]);
   }
 }

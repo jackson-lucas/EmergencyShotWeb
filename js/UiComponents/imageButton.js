@@ -2,7 +2,7 @@ import riot from 'riot';
 import dispatcher from '../Components/dispatcher.js';
 import ACTION from '../Components/ACTION.js';
 
-// DONE:10 create table dynamically
+// DONE:40 create table dynamically
 
 riot.tag('image-button',
 

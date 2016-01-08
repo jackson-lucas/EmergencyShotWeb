@@ -1,6 +1,6 @@
 import riot from 'riot';
 
-// DONE:10 create table dynamically
+// DONE:50 create table dynamically
 
 riot.tag('image-modal',
 

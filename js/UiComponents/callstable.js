@@ -3,7 +3,7 @@ import SINISTER from '../Components/SINISTER.js';
 import ACTION from '../Components/ACTION.js';
 import dispatcher from '../Components/dispatcher.js';
 import './imageButton.js';
-// DONE:10 create table dynamically
+// DONE:30 create table dynamically
 
 riot.tag('calls-table',
 
@@ -49,6 +49,7 @@ function constructor(options) {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log(arguments);
     dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]});
+    // TODO FIX after each show, a new modal is created
     $('#modal')
       .modal('setting', 'transition', 'horizontal flip')
       .modal('show');
