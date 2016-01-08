@@ -57,7 +57,7 @@ export default class CallStore extends Store {
         // TODO:50 REFACTOR app architecture use Publish/Subscribe Pattern
         break;
       case ACTION.ON_CALL_SELECTED:
-        this.data.callSelected = data.callSelected;
+        this.data.callSelected = data.call_selected;
         riot.mount('app', { 'data': this.data });
         break;
       default:

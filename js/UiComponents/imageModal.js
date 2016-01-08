@@ -14,9 +14,9 @@ riot.tag('image-modal',
       <img src="#">
     </div>
     <div class="description">
-      {options.call.date}d
-      <div class="ui divider"></div>{options.call.horario}d
-      <div class="ui divider"></div>{options.call.endereco}d
+      {options.call.data}
+      <div class="ui divider"></div>{options.call.horario}
+      <div class="ui divider"></div>{options.call.endereco}
     </div>
   </div>
 </div>`,

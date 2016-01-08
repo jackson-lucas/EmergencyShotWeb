@@ -25,7 +25,7 @@ riot.tag('calls-table',
       <td>{call.horario}</td>
       <td>{call.lon}</td>
       <td>
-        <div id="{'ESWimage'+index}" class="ui icon button">
+        <div onclick="{this.showModal.bind(this, call)}" class="ui icon button">
           <i class="photo icon"></i>
         </div>
       </td>
@@ -48,8 +48,8 @@ function constructor(options) {
   this.showModal = function () {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log(arguments);
-    dispatcher.dispatch(ACTION.ON_CALL_SELECTED, arguments[0]);
-  }.bind(this, dispatcher);
+    dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]});
+  };
 
   this.addImageClickListener = function () {
     console.log("click click clik");
