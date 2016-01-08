@@ -19,7 +19,7 @@ riot.tag('calls-table',
   </thead>
   <tbody>
     <virtual>
-    <tr each="{call, index in options.calls}">
+    <tr each="{call in options.calls}">
       <td>{call.sinistro}</td>
       <td>{call.data}</td>
       <td>{call.horario}</td>
@@ -49,26 +49,14 @@ function constructor(options) {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log(arguments);
     dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]});
+    $('.fullscreen.modal')
+      .modal('setting', 'transition', 'horizontal flip')
+      .modal('show');
   };
 
-  this.addImageClickListener = function () {
-    console.log("click click clik");
-    console.log(this.showModal);
-
-    // TODO [HIGH] discover a way to pass each call parameter to imageModal
-    for(let index = 0; index < this.options.calls.length; index++) {
-      let id = 'ESWimage'+index;
-      //$(id).click(this.showModal);
-      let image = document.getElementById(id);
-
-      image.addEventListener('click', this.showModal);
-    }
-
-  };
 
   this.on('mount', function () {
     console.log('mounting table');
-    this.addImageClickListener();
     this.setSinistersName();
   }.bind(this));
 

@@ -4,7 +4,7 @@ import riot from 'riot';
 
 riot.tag('image-modal',
 
-`<div class="ui active fullscreen modal">
+`<div class="ui fullscreen modal">
   <i class="close icon"></i>
   <div class="header">
     {options.call.sinistro}
