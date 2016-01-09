@@ -13,20 +13,19 @@ A Store is supposed to trigger only one view. If a second view is necessary,
  WARNING this implementation do not cover dynamic components that don't listen
  anymore. If this one day be necessary, it must be implemented. YAGNI principle.
  */
+
 export default class Store {
   constructor() {
-    this.listener;
+    this.listener
   }
 
   setListener(listener) {
-    this.listener = listener;
+    this.listener = listener
   }
 
   dispatch(action, data) {
-    this.on(action, data);
+    this.on(action, data)
   }
 
-  on(action, data) {
-
-  }
+  on(action, data) {}
 }

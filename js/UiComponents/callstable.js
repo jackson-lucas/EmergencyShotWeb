@@ -1,13 +1,14 @@
-import riot from 'riot';
-import SINISTER from '../Components/SINISTER.js';
-import ACTION from '../Components/ACTION.js';
-import dispatcher from '../Components/dispatcher.js';
-import './imageButton.js';
+import riot from 'riot'
+import SINISTER from '../Components/SINISTER.js'
+import ACTION from '../Components/ACTION.js'
+import dispatcher from '../Components/dispatcher.js'
+import './imageButton.js'
 // DONE:30 create table dynamically
 
 riot.tag('calls-table',
 
-`<table class="ui red table">
+  `
+  <table class="ui red table">
   <thead>
     <tr>
       <th>Tipo do Sinistro</th>
@@ -32,36 +33,36 @@ riot.tag('calls-table',
     </tr>
     </virtual>
   </tbody>
-</table>`,
+  </table>`,
 
-function constructor(options) {
-  this.options = options;
+  function constructor (options) {
+    this.options = options
 
-  this.setSinistersName = function setSinistersName() {
-    let calls = this.options.calls;
+    this.setSinistersName = function setSinistersName () {
+      let calls = this.options.calls
 
-    for(let index = 0; index < calls.length; index++) {
-      calls[index].sinistro = SINISTER[calls[index].id_sinistro - 1];
+      for (let index = 0; index < calls.length; index++) {
+        calls[index].sinistro = SINISTER[calls[index].id_sinistro - 1]
+      }
     }
-  };
 
-  this.showModal = function () {
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    console.log(arguments);
-    dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]});
-    // TODO FIX after each show, a new modal is created
-    $('#modal')
-      .modal('setting', 'transition', 'horizontal flip')
-      .modal('show');
-  };
+    this.showModal = function () {
+      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!')
+      console.log(arguments)
+      dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]})
+      // TODO FIX after each show, a new modal is created
+      // TODO order table based on table head choosen.
+      $('#modal')
+        .modal('setting', 'transition', 'horizontal flip')
+        .modal('show')
+    }
 
+    this.on('mount', function () {
+      console.log('mounting table')
+      this.setSinistersName()
+    }.bind(this))
 
-  this.on('mount', function () {
-    console.log('mounting table');
-    this.setSinistersName();
-  }.bind(this));
-
-  this.on('update', function () {
-    this.setSinistersName();
+    this.on('update', function () {
+      this.setSinistersName()
+    })
   })
-});

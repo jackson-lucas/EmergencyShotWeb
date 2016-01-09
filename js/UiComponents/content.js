@@ -1,10 +1,10 @@
-import riot from 'riot';
-import './map.js';
-import './callsTable.js';
+import riot from 'riot'
+import './map.js'
+import './callsTable.js'
 
 riot.tag('content',
 
-`
+  `
 <div class="my_content">
   <map data="{options.data}" show={options.data.show_map}>
   </map>
@@ -12,9 +12,9 @@ riot.tag('content',
   </calls-table>
 </div>`,
 
-function constructor(options) {
-  this.options = options;
-  console.log("content");
-  console.log(options);
-  console.log(options.data);
-})
+  function constructor (options) {
+    this.options = options
+    console.log('content')
+    console.log(options)
+    console.log(options.data)
+  })

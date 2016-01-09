@@ -1,10 +1,9 @@
-import riot from 'riot';
-
+import riot from 'riot'
 // DONE:50 create table dynamically
 
 riot.tag('image-modal',
 
-`<div id="modal" class="ui fullscreen modal">
+  `<div id="modal" class="ui fullscreen modal">
   <i class="close icon"></i>
   <div class="header">
     {options.call.sinistro}
@@ -21,8 +20,8 @@ riot.tag('image-modal',
   </div>
 </div>`,
 
-function constructor(options) {
-  this.options = options;
-  console.log(options);
-  console.log("DFDFSDFSDFSDFSDFSD");
-});
+  function constructor (options) {
+    this.options = options
+    console.log(options)
+    console.log('DFDFSDFSDFSDFSDFSD')
+  })

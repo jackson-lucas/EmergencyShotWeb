@@ -1,10 +1,10 @@
-import riot from 'riot';
-import dispatcher from '../Components/dispatcher.js';
-import ACTION from '../Components/ACTION.js';
+import riot from 'riot'
+import dispatcher from '../Components/dispatcher.js'
+import ACTION from '../Components/ACTION.js'
 
 riot.tag('dropdown',
 
-`<div onclick="{onSelectFilter}" class="ui floating labeled icon dropdown button">
+  `<div onclick="{onSelectFilter}" class="ui floating labeled icon dropdown button">
   <i class="filter icon"></i>
   <span class="text">Filtrar por horas</span>
   <div class="menu">
@@ -40,30 +40,27 @@ riot.tag('dropdown',
   </div>
 </div>`,
 
-function constructor(options) {
-  this.options = options;
-  this.value = '';
+  function constructor (options) {
+    this.options = options
+    this.value = ''
 
-  this.onSelectFilter = function onSelectFilter() {
-    let selected = $('.selected > .text');
-    let newValue = selected.first().text();
+    this.onSelectFilter = function onSelectFilter () {
+      let selected = $('.selected > .text')
+      let newValue = selected.first().text()
 
-    if(newValue && newValue != this.value) {
+      if (newValue && newValue != this.value) {
+        this.value = newValue
 
-      this.value = newValue;
-
-      dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': this.value});
-      console.log("Dispatched: " + ACTION.ON_SELECT_FILTER);
+        dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': this.value})
+        console.log('Dispatched: ' + ACTION.ON_SELECT_FILTER)
+      }
     }
-  }
 
-  this.on('mount', function() {
+    this.on('mount', function () {
+      $('.ui.dropdown').dropdown()
 
-    $('.ui.dropdown').dropdown();
+      // DONE:100 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
+      // DONE:120 dispatch ON_SELECT_FILTER with the time to be queried.
 
-    // DONE:100 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-    // DONE:120 dispatch ON_SELECT_FILTER with the time to be queried.
-
-
-  }.bind(this));
-});
+    }.bind(this))
+  })

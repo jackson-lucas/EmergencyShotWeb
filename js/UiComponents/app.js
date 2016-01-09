@@ -1,9 +1,7 @@
-import riot from 'riot';
-
-import './sidebar.js';
-import './content.js';
-import './imageModal.js';
-
+import riot from 'riot'
+import './sidebar.js'
+import './content.js'
+import './imageModal.js'
 
 // DONE:220 create component sidebar
 // DONE:230 CSS framework must have table, dialog, dropdown(select), sidebar
@@ -15,13 +13,13 @@ import './imageModal.js';
 // DONE:150 nest sidebar call to execute before each router(map, table)
 riot.tag('app',
 
-`<image-modal call="{options.data.callSelected}"></image-modal>
+  `<image-modal call="{options.data.callSelected}"></image-modal>
 <sidebar show_map="{options.data.show_map}"></sidebar>
 <content data="{options.data}"></content>`,
 
-function constructor(options) {
-  this.options = options;
-  console.log("app initializing");
-  console.log(options);
-  console.log(options.data);
-});
+  function constructor (options) {
+    this.options = options
+    console.log('app initializing')
+    console.log(options)
+    console.log(options.data)
+  })
