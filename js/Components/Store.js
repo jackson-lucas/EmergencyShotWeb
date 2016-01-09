@@ -15,17 +15,17 @@ A Store is supposed to trigger only one view. If a second view is necessary,
  */
 
 export default class Store {
-  constructor() {
+  constructor () {
     this.listener
   }
 
-  setListener(listener) {
+  setListener (listener) {
     this.listener = listener
   }
 
-  dispatch(action, data) {
+  dispatch (action, data) {
     this.on(action, data)
   }
 
-  on(action, data) {}
+  on (action, data) {}
 }

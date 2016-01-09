@@ -1,6 +1,4 @@
 import riot from 'riot'
-import dispatcher from '../Components/dispatcher.js'
-import ACTION from '../Components/ACTION.js'
 
 // DONE:40 create table dynamically
 
@@ -12,5 +10,4 @@ riot.tag('image-button',
 
   function constructor (options) {
     this.options = options
-
   })

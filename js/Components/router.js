@@ -1,5 +1,4 @@
 import page from 'page'
-import riot from 'riot'
 import dispatcher from './dispatcher.js'
 import ACTION from './ACTION.js'
 
@@ -10,8 +9,8 @@ import ACTION from './ACTION.js'
 // One store downside is to many logic to just one component
 // Router should be inside store? since store is the one handling logic
 
-export default class Router {
-  constructor() {
+export default {
+  initialize: function () {
     // DONE:140 [TEST] if connection with dispatcher and store.
 
     page.base('/#!')
@@ -19,14 +18,14 @@ export default class Router {
     page('/', this.map)
     page('/table', this.table)
     page()
-  }
+  },
 
-  map() {
+  map: function () {
     console.log('map')
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': true})
-  }
+  },
 
-  table() {
+  table: function () {
     console.log('table')
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': false})
   }

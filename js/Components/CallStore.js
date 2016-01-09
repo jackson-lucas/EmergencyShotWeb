@@ -10,21 +10,29 @@ export default class CallStore extends Store {
   // DONE:10 on click link of image, show image in modal(popup like)
   // DONE:0 create sinister's list
   // DONE:20 set default position to Manaus and give proper default zoom to see the whole city.
-  constructor() {
+  constructor () {
     super()
 
     this.data = {}
 
     this.data.callSelected = {}
-    this.data.calls = [
-      {data: '11-27-2015',horario: '15:15:00',lat: '-3.116528',lon: '-60.031731',id_sinistro: '1'}, {data: '11-27-2015',horario: '16:00:00',lat: '-3.113528',lon: '-60.021731',id_sinistro: '2'}, {data: '11-27-2015',horario: '23:10:00',lat: '-3.110528',lon: '-60.001731',id_sinistro: '1'}]
+    this.data.calls = [{ data: '11-27-2015', horario: '15:15:00',
+        lat: '-3.116528',
+        lon: '-60.031731',
+        id_sinistro: '1'
+      }, { data: '11-27-2015', horario: '16:00:00',
+        lat: '-3.113528',
+        lon: '-60.021731', id_sinistro: '2'}, { data: '11-27-2015',
+        horario: '23:10:00', lat: '-3.110528', lon: '-60.001731',
+        id_sinistro: '1'
+      }]
     // Underscore must be used when passing parameters to UI(RiotJS limitation).
     this.data.show_map = true
     this.data.defaultZoom = 13
     this.data.defaultPosition = [-3.113528, -60.031731]
   }
 
-  on(action, data) {
+  on (action, data) {
     console.log('ACTION FIRED ' + action)
 
     switch (action) {
@@ -63,12 +71,12 @@ export default class CallStore extends Store {
     }
   }
 
-  onSelectFilter(filter) {
+  onSelectFilter (filter) {
     let apiHandler = new ApiHandler()
     apiHandler.getEmergencyCalls(filter)
   }
 
-  routeChanged(mode) {
+  routeChanged (mode) {
     let tag = riot.mount('app', { 'data': this.data })
     // TODO:30 INVESTIGATE should mount just on first and then update?
     this.setListener(tag[0])

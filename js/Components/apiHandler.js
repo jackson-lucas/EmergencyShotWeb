@@ -2,11 +2,8 @@ import ACTION from './ACTION.js'
 import dispatcher from './dispatcher.js'
 
 export default class ApiHandler {
-  constructor() {
-    // dispatcher.dispatch(ACTION.REGISTER_LISTENER, {'listener': this})
-  }
 
-  dispatch(action, data) {
+  dispatch (action, data) {
     switch (action) {
       case ACTION.ON_FILTER_SELECTED:
 
@@ -16,9 +13,9 @@ export default class ApiHandler {
     }
   }
 
-  dateToString(date) {
+  dateToString (date) {
     date = date + ''
-    if (date.length == 1) {
+    if (date.length === 1) {
       date = '0' + date
     }
 
@@ -26,7 +23,7 @@ export default class ApiHandler {
   }
 
   // API format (date: yyyyddmm; time:hhmmss)
-  getDate(date = new Date() , hoursAgo) {
+  getDate (date = new Date(), hoursAgo) {
     console.log(date)
     let dateApi = {}
 
@@ -53,14 +50,14 @@ export default class ApiHandler {
     return {'api_format': dateApi, 'js_format': date}
   }
 
-  getEmergencyCalls(hoursAgo) {
+  getEmergencyCalls (hoursAgo) {
     let end = this.getDate()
     let start = this.getDate(end.js_format, hoursAgo)
     console.log('emergency')
     console.log(hoursAgo)
     console.log(end)
     console.log(start)
-    $.ajax({
+    window.$.ajax({
       url: `http://127.0.0.1:3000/getCalls/${start.api_format.date}/${start.api_format.time}/${end.api_format.date}/${end.api_format.time}`,
       error: function (error) {
         console.log('ERROR!!!')
@@ -77,4 +74,3 @@ export default class ApiHandler {
     })
   }
 }
-

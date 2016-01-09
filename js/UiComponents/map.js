@@ -21,20 +21,19 @@ riot.tag('map',
 
       console.log(this.options.data)
 
-      let map = L.map('map').setView(this.options.data.defaultPosition,
+      let map = window.L.map('map').setView(this.options.data.defaultPosition,
         this.options.data.defaultZoom)
 
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      window.L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map)
 
-      this.markers = L.markerClusterGroup()
+      this.markers = window.L.markerClusterGroup()
       let calls = this.options.data.calls
       for (let index = 0; index < calls.length; index++) {
         let call = calls[index]
-        this.markers.addLayer(L.marker([call.lat, call.lon]))
+        this.markers.addLayer(window.L.marker([call.lat, call.lon]))
       }
       map.addLayer(this.markers)
     }.bind(this))
-
   })

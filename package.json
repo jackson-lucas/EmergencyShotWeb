@@ -14,6 +14,11 @@
     "production": "webpack -p",
     "dev": "webpack-dev-server --content-base build/ --inline --hot --progress --colors --watch -d"
   },
+  "standard": {
+    "ignore": [
+      "/build/**"
+    ]
+  },
   "author": "Jackson Lima",
   "private": true,
   "license": "",

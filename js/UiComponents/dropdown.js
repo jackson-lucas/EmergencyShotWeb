@@ -45,10 +45,10 @@ riot.tag('dropdown',
     this.value = ''
 
     this.onSelectFilter = function onSelectFilter () {
-      let selected = $('.selected > .text')
+      let selected = window.$('.selected > .text')
       let newValue = selected.first().text()
 
-      if (newValue && newValue != this.value) {
+      if (newValue && newValue !== this.value) {
         this.value = newValue
 
         dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': this.value})
@@ -57,10 +57,9 @@ riot.tag('dropdown',
     }
 
     this.on('mount', function () {
-      $('.ui.dropdown').dropdown()
+      window.$('.ui.dropdown').dropdown()
 
-      // DONE:100 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-      // DONE:120 dispatch ON_SELECT_FILTER with the time to be queried.
-
-    }.bind(this))
+    // DONE:100 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
+    // DONE:120 dispatch ON_SELECT_FILTER with the time to be queried.
+    })
   })

@@ -52,7 +52,7 @@ riot.tag('calls-table',
       dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]})
       // TODO FIX after each show, a new modal is created
       // TODO order table based on table head choosen.
-      $('#modal')
+      window.$('#modal')
         .modal('setting', 'transition', 'horizontal flip')
         .modal('show')
     }
