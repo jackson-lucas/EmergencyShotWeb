@@ -9,26 +9,23 @@ A Store is supposed to trigger only one view. If a second view is necessary,
 */
 // Comparing with MVC, Store is the Controller.
 
-// TODO:30 [REFACTOR] eliminate on() in Store and others components. All components just dispatch.
-
 /*
  WARNING this implementation do not cover dynamic components that don't listen
  anymore. If this one day be necessary, it must be implemented. YAGNI principle.
  */
+
 export default class Store {
-  constructor() {
-    this.listener;
+  constructor () {
+    this.listener
   }
 
-  setListener(listener) {
-    this.listener = listener;
+  setListener (listener) {
+    this.listener = listener
   }
 
-  dispatch(action, data) {
-    this.on(action, data);
+  dispatch (action, data) {
+    this.on(action, data)
   }
 
-  on(action, data) {
-
-  }
+  on (action, data) {}
 }

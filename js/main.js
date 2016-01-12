@@ -1,10 +1,7 @@
-import CallStore from './Components/CallStore.js';
-import dispatcher from './Components/dispatcher.js';
-import Router from './Components/Router.js';
-import ApiHandler from './Components/ApiHandler.js';
+import CallStore from './Components/CallStore.js'
+import dispatcher from './Components/dispatcher.js'
+import Router from './Components/Router.js'
 
-let callStore = new CallStore();
-dispatcher.addStore(callStore);
+dispatcher.addStore(new CallStore())
 
-let router = new Router();
-
+Router.initialize()

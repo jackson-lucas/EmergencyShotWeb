@@ -1,10 +1,10 @@
-import riot from 'riot';
-import dispatcher from '../Components/dispatcher.js';
-import ACTION from '../Components/Action.js';
+import riot from 'riot'
+import dispatcher from '../Components/dispatcher.js'
+import ACTION from '../Components/ACTION.js'
 
 riot.tag('dropdown',
 
-`<div onclick="{onSelectFilter}" class="ui floating labeled icon dropdown button">
+  `<div onclick="{onSelectFilter}" class="ui floating labeled icon dropdown button">
   <i class="filter icon"></i>
   <span class="text">Filtrar por horas</span>
   <div class="menu">
@@ -39,31 +39,28 @@ riot.tag('dropdown',
 
   </div>
 </div>`,
+// DONE:40 FIX LOW filtrar horas isnt updated with the value(dropdown)
+// DONE:20 FIX LOW filtrar horas is reset with changed path(map/table)
+  function constructor (options) {
+    this.options = options
+    this.value = ''
 
-function constructor(options) {
-  this.options = options;
-  this.value = '';
+    this.onSelectFilter = function onSelectFilter () {
+      let selected = window.$('.selected > .text')
+      let newValue = selected.first().text()
 
-  this.onSelectFilter = function onSelectFilter() {
-    let selected = $('.selected > .text');
-    let newValue = selected.first().text();
+      if (newValue && newValue !== this.value) {
+        this.value = newValue
 
-    if(newValue && newValue != this.value) {
-
-      this.value = newValue;
-
-      dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': this.value});
-      console.log("Dispatched: " + ACTION.ON_SELECT_FILTER);
+        dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': this.value})
+        console.log('Dispatched: ' + ACTION.ON_SELECT_FILTER)
+      }
     }
-  }
 
-  this.on('mount', function() {
+    this.on('mount', function () {
+      window.$('.ui.dropdown').dropdown()
 
-    $('.ui.dropdown').dropdown();
-
-    // DONE:40 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-    // DONE:60 dispatch ON_SELECT_FILTER with the time to be queried.
-
-
-  }.bind(this));
-});
+    // DONE:170 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
+    // DONE:190 dispatch ON_SELECT_FILTER with the time to be queried.
+    })
+  })
