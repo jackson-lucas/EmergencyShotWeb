@@ -61,7 +61,7 @@ export default class CallStore extends Store {
         // riot.mount('app', { 'data': this.data })
         // console.log(this.listener)
         // DONE:130 TEST if listener is updated
-        // TODO:20 REFACTOR app architecture use Publish/Subscribe Pattern
+        // TODO:30 REFACTOR app architecture use Publish/Subscribe Pattern
         break
       case ACTION.ON_CALL_SELECTED:
         this.data.callSelected = data.call_selected
@@ -79,7 +79,7 @@ export default class CallStore extends Store {
   }
 
   routeChanged (mode) {
-    // TODO:10 FIX when app start with table on change to map. the map is not loaded.
+    // TODO:20 FIX when app start with table on change to map. the map is not loaded.
     if (this.listener) {
       riot.update()
     } else {

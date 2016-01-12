@@ -8,7 +8,7 @@ import './imageButton.js'
 riot.tag('calls-table',
 
   `
-  <table class="ui red table">
+  <table class="ui celled red table">
   <thead>
     <tr>
       <th>Tipo do Sinistro</th>
@@ -51,7 +51,7 @@ riot.tag('calls-table',
       console.log(arguments)
       dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]})
       // DONE:10 FIX CRITICAL after each show, a new modal is created
-      // DOING:0 change semantic ui component table to order the table properly
+      // TODO:10 change semantic ui component table to order the table properly(via RiotJS)
       // DONE:0 FIX MEDIUM on route change(map/table), riot should update and not mount.
       window.$('#modal')
         .modal('setting', 'transition', 'horizontal flip')
