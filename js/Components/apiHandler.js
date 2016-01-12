@@ -39,7 +39,7 @@ export default class ApiHandler {
     let year = date.getFullYear()
     let minutes = this.dateToString(date.getMinutes())
     let hours = this.dateToString(date.getHours())
-    // DONE:90 FIX Secons Pattern 2 seconds to 02 seconds
+    // DONE:160 FIX Secons Pattern 2 seconds to 02 seconds
     let seconds = this.dateToString(date.getSeconds())
 
     dateApi.date = `${month}-${day}-${year}`
@@ -67,7 +67,7 @@ export default class ApiHandler {
       success: function (calls) {
         console.log('IT WORKED!!!')
         console.log(JSON.stringify(calls))
-        // DONE:110 return calls to Store to store update calls
+        // DONE:180 return calls to Store to store update calls
         dispatcher.dispatch(ACTION.ON_DATA_RECEIVED, {'calls': calls})
       },
       type: 'GET'

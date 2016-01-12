@@ -1,6 +1,6 @@
 import riot from 'riot'
 
-// DONE:40 create table dynamically
+// DONE:110 create table dynamically
 
 riot.tag('image-button',
 

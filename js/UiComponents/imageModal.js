@@ -1,5 +1,5 @@
 import riot from 'riot'
-// DONE:50 create table dynamically
+// DONE:120 create table dynamically
 
 riot.tag('image-modal',
 
@@ -10,7 +10,7 @@ riot.tag('image-modal',
   </div>
   <div class="image content">
     <div class="ui big image">
-      <img src="{options.path}/{options.id}">
+      <img src="{options.path}{options.call.id}">
     </div>
     <div class="description">
       Data: {options.call.data}

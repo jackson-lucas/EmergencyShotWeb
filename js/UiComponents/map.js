@@ -1,7 +1,7 @@
 import riot from 'riot'
 
 // WARNING leaflet from npm is not working. Workaround is use global direct in html file.
-// DONE:180 [LOW] Get leaflet link in html file and download file then import by the file.
+// DONE:250 [LOW] Get leaflet link in html file and download file then import by the file.
 
 riot.tag('map',
 
@@ -13,8 +13,8 @@ riot.tag('map',
     console.log(options)
 
     console.log(options.data)
-    // TODO ENHANCEMENT marker on click show modal
-    // DONE:80 convention a way to update the markers properly (this.on('update'))
+    // TODO:0 ENHANCEMENT marker on click show modal
+    // DONE:150 convention a way to update the markers properly (this.on('update'))
     this.on('mount', function () {
       console.log('map mount')
       console.log(this.options)

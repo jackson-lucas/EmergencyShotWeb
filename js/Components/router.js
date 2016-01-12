@@ -11,7 +11,7 @@ import ACTION from './ACTION.js'
 
 export default {
   initialize: function () {
-    // DONE:140 [TEST] if connection with dispatcher and store.
+    // DONE:210 [TEST] if connection with dispatcher and store.
 
     page.base('/#!')
 

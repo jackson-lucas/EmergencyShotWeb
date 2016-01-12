@@ -39,7 +39,8 @@ riot.tag('dropdown',
 
   </div>
 </div>`,
-// TODO FIX LOW filtrar horas isnt updated with the value(dropdown)
+// DONE:40 FIX LOW filtrar horas isnt updated with the value(dropdown)
+// DONE:20 FIX LOW filtrar horas is reset with changed path(map/table)
   function constructor (options) {
     this.options = options
     this.value = ''
@@ -59,7 +60,7 @@ riot.tag('dropdown',
     this.on('mount', function () {
       window.$('.ui.dropdown').dropdown()
 
-    // DONE:100 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-    // DONE:120 dispatch ON_SELECT_FILTER with the time to be queried.
+    // DONE:170 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
+    // DONE:190 dispatch ON_SELECT_FILTER with the time to be queried.
     })
   })
