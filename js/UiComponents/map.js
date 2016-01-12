@@ -13,7 +13,7 @@ riot.tag('map',
     console.log(options)
 
     console.log(options.data)
-
+    // TODO ENHANCEMENT marker on click show modal
     // DONE:80 convention a way to update the markers properly (this.on('update'))
     this.on('mount', function () {
       console.log('map mount')

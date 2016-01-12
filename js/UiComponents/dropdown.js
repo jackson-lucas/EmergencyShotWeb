@@ -39,7 +39,7 @@ riot.tag('dropdown',
 
   </div>
 </div>`,
-
+// TODO FIX LOW filtrar horas isnt updated with the value(dropdown)
   function constructor (options) {
     this.options = options
     this.value = ''

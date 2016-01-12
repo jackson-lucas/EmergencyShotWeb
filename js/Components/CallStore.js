@@ -4,6 +4,8 @@ import ACTION from './ACTION.js'
 import ApiHandler from './ApiHandler.js'
 import '../UiComponents/app.js'
 
+// TODO change origin location to center of Manaus
+
 export default class CallStore extends Store {
 
   // TODO:20 get address from lat and lon and add to each object after an update
@@ -28,8 +30,8 @@ export default class CallStore extends Store {
       }]
     // Underscore must be used when passing parameters to UI(RiotJS limitation).
     this.data.show_map = true
-    this.data.defaultZoom = 13
-    this.data.defaultPosition = [-3.113528, -60.031731]
+    this.data.defaultZoom = 12
+    this.data.defaultPosition = [-3.043528, -59.99]
   }
 
   on (action, data) {

@@ -24,7 +24,7 @@ riot.tag('calls-table',
       <td>{call.sinistro}</td>
       <td>{call.data}</td>
       <td>{call.horario}</td>
-      <td>{call.lon}</td>
+      <td>{call.endereco}</td>
       <td>
         <div onclick="{this.showModal.bind(this, call)}" class="ui icon button">
           <i class="photo icon"></i>
@@ -50,8 +50,8 @@ riot.tag('calls-table',
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!')
       console.log(arguments)
       dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]})
-      // TODO FIX after each show, a new modal is created
-      // TODO order table based on table head choosen.
+      // TODO FIX CRITICAL after each show, a new modal is created
+      // TODO change semantic ui component table to order the table properly
       window.$('#modal')
         .modal('setting', 'transition', 'horizontal flip')
         .modal('show')
