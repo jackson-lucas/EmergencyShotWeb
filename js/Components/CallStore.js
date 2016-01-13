@@ -15,18 +15,11 @@ export default class CallStore extends Store {
     super()
 
     this.data = {}
-    this.data.imageApiPath = 'localhost:8080/getImage/'
+    this.timer = null
+    this.hoursAgo = null
+    this.data.imageApiPath = 'localhost:3000/getImage/'
     this.data.callSelected = {}
-    this.data.calls = [{ data: '11-27-2015', horario: '15:15:00',
-        lat: '-3.116528',
-        lon: '-60.031731',
-        id_sinistro: '1'
-      }, { data: '11-27-2015', horario: '16:00:00',
-        lat: '-3.113528',
-        lon: '-60.021731', id_sinistro: '2'}, { data: '11-27-2015',
-        horario: '23:10:00', lat: '-3.110528', lon: '-60.001731',
-        id_sinistro: '1'
-      }]
+    this.data.calls = []
     // Underscore must be used when passing parameters to UI(RiotJS limitation).
     this.data.show_map = true
     this.data.defaultZoom = 12
@@ -45,7 +38,14 @@ export default class CallStore extends Store {
         break
 
       case ACTION.ON_SELECT_FILTER:
-        this.onSelectFilter(data.value)
+        if (this.data.calls.length && this.hoursAgo === data.value) {
+          this.onSelectFilter(data.value,
+            this.data.calls[this.data.calls.length - 1])
+        } else {
+          this.hoursAgo = data.value
+          this.onSelectFilter(data.value, null)
+        }
+
         break
       case ACTION.REGISTER_LISTENER:
         this.addListener(data.listener)
@@ -73,9 +73,16 @@ export default class CallStore extends Store {
     }
   }
 
-  onSelectFilter (filter) {
+  onSelectFilter (filter, lastCall) {
     let apiHandler = new ApiHandler()
-    apiHandler.getEmergencyCalls(filter)
+
+    if (this.timer) {
+      window.clearInterval(this.timer)
+    }
+
+    this.timer = window.setInterval(function () {
+      apiHandler.getEmergencyCalls(filter, lastCall)
+    }, 5000)
   }
 
   routeChanged (mode) {

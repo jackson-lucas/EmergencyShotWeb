@@ -50,15 +50,26 @@ export default class ApiHandler {
     return {'api_format': dateApi, 'js_format': date}
   }
 
-  getEmergencyCalls (hoursAgo) {
-    let end = this.getDate()
-    let start = this.getDate(end.js_format, hoursAgo)
+  getEmergencyCalls (hoursAgo, lastCall) {
+    let start
+
+    if (lastCall) {
+      start = {
+        api_format: {
+          date: lastCall.date,
+          time: lastCall.time
+        }
+      }
+    } else {
+      let end = this.getDate()
+      start = this.getDate(end.js_format, hoursAgo)
+    }
+
     console.log('emergency')
     console.log(hoursAgo)
-    console.log(end)
     console.log(start)
     window.$.ajax({
-      url: `http://127.0.0.1:3000/getCalls/${start.api_format.date}/${start.api_format.time}/${end.api_format.date}/${end.api_format.time}`,
+      url: `http://127.0.0.1:3000/getCallsSince/${start.api_format.date}/${start.api_format.time}`,
       error: function (error) {
         console.log('ERROR!!!')
         console.log(error)
@@ -68,7 +79,9 @@ export default class ApiHandler {
         console.log('IT WORKED!!!')
         console.log(JSON.stringify(calls))
         // DONE:180 return calls to Store to store update calls
-        dispatcher.dispatch(ACTION.ON_DATA_RECEIVED, {'calls': calls})
+        if (calls) {
+          dispatcher.dispatch(ACTION.ON_DATA_RECEIVED, {'calls': calls})
+        }
       },
       type: 'GET'
     })
