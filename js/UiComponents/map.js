@@ -1,7 +1,7 @@
 import riot from 'riot'
 
 // WARNING leaflet from npm is not working. Workaround is use global direct in html file.
-// DONE:250 [LOW] Get leaflet link in html file and download file then import by the file.
+// DONE:260 [LOW] Get leaflet link in html file and download file then import by the file.
 
 riot.tag('map',
 
@@ -13,8 +13,8 @@ riot.tag('map',
     console.log(options)
 
     console.log(options.data)
-    // TODO:0 ENHANCEMENT marker on click show modal
-    // DONE:150 convention a way to update the markers properly (this.on('update'))
+    // TODO:20 ENHANCEMENT marker on click show modal
+    // DONE:160 convention a way to update the markers properly (this.on('update'))
     this.on('mount', function () {
       console.log('map mount')
       console.log(this.options)
@@ -42,14 +42,15 @@ riot.tag('map',
       console.log(this.options)
 
       console.log(this.options.data)
-
+      this.map.removeLayer(this.markers)
+      this.markers = window.L.markerClusterGroup()
       let calls = this.options.data.calls
+      // DONE:0 FIX provide a better way to update server w/o have duplicated calls on map
       for (let index = 0; index < calls.length; index++) {
         let call = calls[index]
         this.markers.addLayer(window.L.marker([call.lat, call.lon]))
       }
-      // TODO FIX update calls from server w/ setInterval(Solution: Promise?) is blocking UI
-      // TODO FIX provide a better way to update server w/o have duplicated calls
+      this.map.addLayer(this.markers)
       // this.markers.refreshClusters()
       this.map._onResize()
     }.bind(this))
