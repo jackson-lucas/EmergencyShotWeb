@@ -25,7 +25,8 @@ riot.tag('sidebar',
   // DONE:150 filter must work returning results to map and alerting user about actual state
   // TODO:60 [LOW] change theme to a more proper way for emergency call system
   // DONE:210 change mode when clicked to. Also change active item when this happens.
-  // TODO:0 Discover why on route change, app is not updated
+  // TODO:0 Discover why on route change, app is not updated after a second dropdown choice
+  // TODO THINK eliminate filter and give a pattern?
   // DOING:0 TEST get image link by modal
   function constructor (options) {
     this.options = options

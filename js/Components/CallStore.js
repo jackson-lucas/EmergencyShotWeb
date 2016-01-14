@@ -18,7 +18,7 @@ export default class CallStore extends Store {
     this.data = {}
     this.timer = null
     this.hoursAgo = null
-    this.data.imageApiPath = 'localhost:3000/getImage/'
+    this.data.imageApiPath = 'http://localhost:3000/getImage/'
     this.data.callSelected = {}
     this.data.calls = []
     // Underscore must be used when passing parameters to UI(RiotJS limitation).

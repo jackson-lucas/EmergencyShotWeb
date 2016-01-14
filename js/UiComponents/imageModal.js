@@ -10,7 +10,7 @@ riot.tag('image-modal',
   </div>
   <div class="image content">
     <div class="ui big image">
-      <img src="{options.path}{options.call.id}">
+      <img src="{options.call.midia}">
     </div>
     <div class="description">
       Data: {options.call.data}

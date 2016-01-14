@@ -3,16 +3,6 @@ import dispatcher from './dispatcher.js'
 
 export default class ApiHandler {
 
-  dispatch (action, data) {
-    switch (action) {
-      case ACTION.ON_FILTER_SELECTED:
-
-        break
-      default:
-
-    }
-  }
-
   dateToString (date) {
     date = date + ''
     if (date.length === 1) {
@@ -68,10 +58,10 @@ export default class ApiHandler {
     }
 
     console.log('emergency')
-    console.log(hoursAgo)
-    console.log(start)
+    let url = `http://127.0.0.1:3000/getCallsSince/${start.api_format.date}/${start.api_format.time}`
+    console.log(url)
     window.$.ajax({
-      url: `http://127.0.0.1:3000/getCallsSince/${start.api_format.date}/${start.api_format.time}`,
+      url: url,
       error: function (error) {
         console.log('ERROR!!!')
         console.log(error)
