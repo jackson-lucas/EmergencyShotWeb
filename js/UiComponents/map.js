@@ -9,17 +9,17 @@ riot.tag('map',
 
   function constructor (options) {
     this.options = options
-    console.log('map options')
-    console.log(options)
+    // console.log('map options')
+    // console.log(options)
 
-    console.log(options.data)
+    // console.log(options.data)
     // TODO:20 ENHANCEMENT marker on click show modal
     // DONE:160 convention a way to update the markers properly (this.on('update'))
     this.on('mount', function () {
-      console.log('map mount')
-      console.log(this.options)
+      // console.log('map mount')
+      // console.log(this.options)
 
-      console.log(this.options.data)
+      // console.log(this.options.data)
 
       this.map = window.L.map('map').setView(this.options.data.defaultPosition,
         this.options.data.defaultZoom)
@@ -38,10 +38,10 @@ riot.tag('map',
     }.bind(this))
 
     this.on('update', function () {
-      console.log('map update')
-      console.log(this.options)
+      // console.log('map update')
+      // console.log(this.options)
 
-      console.log(this.options.data)
+      // console.log(this.options.data)
       this.map.removeLayer(this.markers)
       this.markers = window.L.markerClusterGroup()
       let calls = this.options.data.calls

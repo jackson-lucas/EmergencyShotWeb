@@ -53,7 +53,7 @@ riot.tag('dropdown',
         this.value = newValue
 
         dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': this.value})
-        console.log('Dispatched: ' + ACTION.ON_SELECT_FILTER)
+        // console.log('Dispatched: ' + ACTION.ON_SELECT_FILTER)
       }
     }
 

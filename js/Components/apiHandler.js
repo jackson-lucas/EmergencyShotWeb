@@ -14,14 +14,14 @@ export default class ApiHandler {
 
   // API format (date: yyyyddmm; time:hhmmss)
   getDate (date = new Date(), hoursAgo) {
-    console.log(date)
+    // console.log(date)
     let dateApi = {}
 
     if (hoursAgo) {
-      console.log('Inside')
+      // console.log('Inside')
       date.setHours(date.getHours() - hoursAgo)
-      console.log('HOUR AGO')
-      console.log(date)
+      // console.log('HOUR AGO')
+      // console.log(date)
     }
 
     let day = this.dateToString(date.getDate())
@@ -35,7 +35,7 @@ export default class ApiHandler {
     dateApi.date = `${month}-${day}-${year}`
     dateApi.time = `${hours}:${minutes}:${seconds}`
 
-    console.log(date)
+    // console.log(date)
 
     return {'api_format': dateApi, 'js_format': date}
   }
@@ -57,25 +57,27 @@ export default class ApiHandler {
       start = this.getDate(end.js_format, hoursAgo)
     }
 
-    console.log('emergency')
+    // console.log('emergency')
     let url = `http://127.0.0.1:3000/getCallsSince/${start.api_format.date}/${start.api_format.time}`
-    console.log(url)
-    window.$.ajax({
-      url: url,
-      error: function (error) {
-        console.log('ERROR!!!')
-        console.log(error)
-        dispatcher.dispatch(ACTION.ON_DATA_ERROR)
-      },
-      success: function (calls) {
-        console.log('IT WORKED!!!')
-        console.log(JSON.stringify(calls))
-        // DONE:190 return calls to Store to store update calls
-        if (calls) {
-          dispatcher.dispatch(action, {'calls': calls})
-        }
-      },
-      type: 'GET'
+    // console.log(url)
+    let ajaxCall = function () {
+      return window.$.ajax({
+        url: url,
+        type: 'GET'
+      })
+    }
+
+    ajaxCall().done(function (calls) {
+      // console.log('IT WORKED!!!')
+      // console.log(JSON.stringify(calls))
+      // DONE:190 return calls to Store to store update calls
+      if (calls) {
+        dispatcher.dispatch(action, {'calls': calls})
+      }
+    }).fail(function (error) {
+      // console.log('ERROR!!!')
+      // console.log(error)
+      dispatcher.dispatch(ACTION.ON_DATA_ERROR)
     })
   }
 }

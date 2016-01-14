@@ -30,6 +30,6 @@ riot.tag('sidebar',
   // DOING:0 TEST get image link by modal
   function constructor (options) {
     this.options = options
-    console.log(options)
+    // console.log(options)
   }
 )

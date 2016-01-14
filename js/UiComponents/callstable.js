@@ -47,8 +47,8 @@ riot.tag('calls-table',
     }
 
     this.showModal = function () {
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!')
-      console.log(arguments)
+      // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!')
+      // console.log(arguments)
       dispatcher.dispatch(ACTION.ON_CALL_SELECTED, {'call_selected': arguments[0]})
       // DONE:20 FIX CRITICAL after each show, a new modal is created
       // TODO:30 change semantic ui component table to order the table properly(via RiotJS)
@@ -59,7 +59,7 @@ riot.tag('calls-table',
     }
 
     this.on('mount', function () {
-      console.log('mounting table')
+      // console.log('mounting table')
       this.setSinistersName()
     }.bind(this))
 

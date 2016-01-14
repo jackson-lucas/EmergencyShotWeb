@@ -19,7 +19,7 @@ riot.tag('app',
 
   function constructor (options) {
     this.options = options
-    console.log('app initializing')
-    console.log(options)
-    console.log(options.data)
+    // console.log('app initializing')
+    // console.log(options)
+    // console.log(options.data)
   })

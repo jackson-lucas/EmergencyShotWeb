@@ -22,6 +22,6 @@ riot.tag('image-modal',
 
   function constructor (options) {
     this.options = options
-    console.log(options)
-    console.log('DFDFSDFSDFSDFSDFSD')
+    // console.log(options)
+    // console.log('DFDFSDFSDFSDFSDFSD')
   })

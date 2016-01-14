@@ -21,12 +21,12 @@ export default {
   },
 
   map: function () {
-    console.log('map')
+    // console.log('map')
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': true})
   },
 
   table: function () {
-    console.log('table')
+    // console.log('table')
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': false})
   }
 }

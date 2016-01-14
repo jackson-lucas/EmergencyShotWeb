@@ -28,12 +28,12 @@ export default class CallStore extends Store {
   }
 
   on (action, data) {
-    console.log('ACTION FIRED ' + action)
+    // console.log('ACTION FIRED ' + action)
 
     switch (action) {
       case ACTION.ON_ROUTE_CHANGE:
-        console.log('data')
-        console.log(data)
+        // console.log('data')
+        // console.log(data)
         this.data.show_map = data.show_map
         this.routeChanged(this.data.show_map)
         break
@@ -56,7 +56,7 @@ export default class CallStore extends Store {
         riot.update()
         break
       case ACTION.ON_DATA_RECEIVED:
-        console.log(data.calls)
+        // console.log(data.calls)
         this.data.calls = data.calls
         riot.update()
 
@@ -64,7 +64,7 @@ export default class CallStore extends Store {
         // This is a workaround. Correct way is by update but it's not working
         // DONE:40 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated? maybe create our own update(dispatch).
         // riot.mount('app', { 'data': this.data })
-        // console.log(this.listener)
+        // // console.log(this.listener)
         // DONE:140 TEST if listener is updated
         // TODO:50 REFACTOR app architecture use Publish/Subscribe Pattern
         break
