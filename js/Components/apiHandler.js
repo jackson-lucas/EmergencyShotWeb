@@ -3,16 +3,6 @@ import dispatcher from './dispatcher.js'
 
 export default class ApiHandler {
 
-  dispatch (action, data) {
-    switch (action) {
-      case ACTION.ON_FILTER_SELECTED:
-
-        break
-      default:
-
-    }
-  }
-
   dateToString (date) {
     date = date + ''
     if (date.length === 1) {
@@ -39,7 +29,7 @@ export default class ApiHandler {
     let year = date.getFullYear()
     let minutes = this.dateToString(date.getMinutes())
     let hours = this.dateToString(date.getHours())
-    // DONE:160 FIX Secons Pattern 2 seconds to 02 seconds
+    // DONE:170 FIX Secons Pattern 2 seconds to 02 seconds
     let seconds = this.dateToString(date.getSeconds())
 
     dateApi.date = `${month}-${day}-${year}`
@@ -50,15 +40,28 @@ export default class ApiHandler {
     return {'api_format': dateApi, 'js_format': date}
   }
 
-  getEmergencyCalls (hoursAgo) {
-    let end = this.getDate()
-    let start = this.getDate(end.js_format, hoursAgo)
+  getEmergencyCalls (hoursAgo, lastCall) {
+    let start, action
+
+    if (lastCall) {
+      action = ACTION.ON_DATA_UPDATE
+      start = {
+        api_format: {
+          date: lastCall.date,
+          time: lastCall.time
+        }
+      }
+    } else {
+      action = ACTION.ON_DATA_RECEIVED
+      let end = this.getDate()
+      start = this.getDate(end.js_format, hoursAgo)
+    }
+
     console.log('emergency')
-    console.log(hoursAgo)
-    console.log(end)
-    console.log(start)
+    let url = `http://127.0.0.1:3000/getCallsSince/${start.api_format.date}/${start.api_format.time}`
+    console.log(url)
     window.$.ajax({
-      url: `http://127.0.0.1:3000/getCalls/${start.api_format.date}/${start.api_format.time}/${end.api_format.date}/${end.api_format.time}`,
+      url: url,
       error: function (error) {
         console.log('ERROR!!!')
         console.log(error)
@@ -67,8 +70,10 @@ export default class ApiHandler {
       success: function (calls) {
         console.log('IT WORKED!!!')
         console.log(JSON.stringify(calls))
-        // DONE:180 return calls to Store to store update calls
-        dispatcher.dispatch(ACTION.ON_DATA_RECEIVED, {'calls': calls})
+        // DONE:190 return calls to Store to store update calls
+        if (calls) {
+          dispatcher.dispatch(action, {'calls': calls})
+        }
       },
       type: 'GET'
     })

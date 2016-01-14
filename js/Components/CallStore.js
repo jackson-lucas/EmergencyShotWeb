@@ -4,29 +4,23 @@ import ACTION from './ACTION.js'
 import ApiHandler from './ApiHandler.js'
 import '../UiComponents/app.js'
 
-// DONE:100 change origin location to center of Manaus
+// DONE:110 change origin location to center of Manaus
 
 export default class CallStore extends Store {
 
-  // DONE:70 on click link of image, show image in modal(popup like)
-  // DONE:60 create sinister's list
-  // DONE:80 set default position to Manaus and give proper default zoom to see the whole city.
+  // DONE:80 on click link of image, show image in modal(popup like)
+  // DONE:70 create sinister's list
+  // DONE:90 set default position to Manaus and give proper default zoom to see the whole city.
   constructor () {
     super()
 
+    this.apiHandler = new ApiHandler()
     this.data = {}
-    this.data.imageApiPath = 'localhost:8080/getImage/'
+    this.timer = null
+    this.hoursAgo = null
+    this.data.imageApiPath = 'http://localhost:3000/getImage/'
     this.data.callSelected = {}
-    this.data.calls = [{ data: '11-27-2015', horario: '15:15:00',
-        lat: '-3.116528',
-        lon: '-60.031731',
-        id_sinistro: '1'
-      }, { data: '11-27-2015', horario: '16:00:00',
-        lat: '-3.113528',
-        lon: '-60.021731', id_sinistro: '2'}, { data: '11-27-2015',
-        horario: '23:10:00', lat: '-3.110528', lon: '-60.001731',
-        id_sinistro: '1'
-      }]
+    this.data.calls = []
     // Underscore must be used when passing parameters to UI(RiotJS limitation).
     this.data.show_map = true
     this.data.defaultZoom = 12
@@ -45,10 +39,21 @@ export default class CallStore extends Store {
         break
 
       case ACTION.ON_SELECT_FILTER:
-        this.onSelectFilter(data.value)
+        if (this.data.calls.length && this.hoursAgo === data.value) {
+          this.onSelectFilter(data.value,
+            this.data.calls[this.data.calls.length - 1])
+        } else {
+          this.hoursAgo = data.value
+          this.onSelectFilter(data.value, null)
+        }
+
         break
       case ACTION.REGISTER_LISTENER:
         this.addListener(data.listener)
+        break
+      case ACTION.ON_DATA_UPDATE:
+        this.data.calls = this.data.calls.concat(data.calls)
+        riot.update()
         break
       case ACTION.ON_DATA_RECEIVED:
         console.log(data.calls)
@@ -57,11 +62,11 @@ export default class CallStore extends Store {
 
         // this.listener.update({ 'data': this.data })
         // This is a workaround. Correct way is by update but it's not working
-        // DONE:30 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated? maybe create our own update(dispatch).
+        // DONE:40 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated? maybe create our own update(dispatch).
         // riot.mount('app', { 'data': this.data })
         // console.log(this.listener)
-        // DONE:130 TEST if listener is updated
-        // TODO:20 REFACTOR app architecture use Publish/Subscribe Pattern
+        // DONE:140 TEST if listener is updated
+        // TODO:50 REFACTOR app architecture use Publish/Subscribe Pattern
         break
       case ACTION.ON_CALL_SELECTED:
         this.data.callSelected = data.call_selected
@@ -73,19 +78,25 @@ export default class CallStore extends Store {
     }
   }
 
-  onSelectFilter (filter) {
-    let apiHandler = new ApiHandler()
-    apiHandler.getEmergencyCalls(filter)
+  onSelectFilter (filter, lastCall) {
+    this.apiHandler.getEmergencyCalls(filter, lastCall)
+    // if (this.timer) {
+    //   window.clearInterval(this.timer)
+    // }
+    // TODO:10 FIX update calls from server w/ setInterval(Solution: Promise?) is blocking UI
+    // this.timer = window.setInterval(function () {
+    //   apiHandler.getEmergencyCalls(filter, lastCall)
+    // }, 5000)
   }
 
   routeChanged (mode) {
-    // TODO:10 FIX when app start with table on change to map. the map is not loaded.
+    // TODO:40 FIX when app start with table on change to map. the map is not loaded.
     if (this.listener) {
       riot.update()
     } else {
       let tag = riot.mount('app', { 'data': this.data })
       this.setListener(tag[0])
     }
-    // DONE:50 INVESTIGATE should mount just on first and then update?
+    // DONE:60 INVESTIGATE should mount just on first and then update?
   }
 }
