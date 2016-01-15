@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>dropdown.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="Action.html">
+                  Action.js
+                </a>
+              
+                
+                <a class="source" href="CallStore.html">
+                  CallStore.js
+                </a>
+              
+                
+                <a class="source" href="Dispatcher.html">
+                  Dispatcher.js
+                </a>
+              
+                
+                <a class="source" href="SINISTER.html">
+                  SINISTER.js
+                </a>
+              
+                
+                <a class="source" href="Store.html">
+                  Store.js
+                </a>
+              
+                
+                <a class="source" href="apiHandler.html">
+                  apiHandler.js
+                </a>
+              
+                
+                <a class="source" href="router.html">
+                  router.js
+                </a>
+              
+                
+                <a class="source" href="app.html">
+                  app.js
+                </a>
+              
+                
+                <a class="source" href="callstable.html">
+                  callstable.js
+                </a>
+              
+                
+                <a class="source" href="content.html">
+                  content.js
+                </a>
+              
+                
+                <a class="source" href="dropdown.html">
+                  dropdown.js
+                </a>
+              
+                
+                <a class="source" href="imageButton.html">
+                  imageButton.js
+                </a>
+              
+                
+                <a class="source" href="imageModal.html">
+                  imageModal.js
+                </a>
+              
+                
+                <a class="source" href="map.html">
+                  map.js
+                </a>
+              
+                
+                <a class="source" href="sidebar.html">
+                  sidebar.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>dropdown.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> riot <span class="hljs-keyword">from</span> <span class="hljs-string">'riot'</span>
+<span class="hljs-keyword">import</span> dispatcher <span class="hljs-keyword">from</span> <span class="hljs-string">'../Components/dispatcher.js'</span>
+<span class="hljs-keyword">import</span> ACTION <span class="hljs-keyword">from</span> <span class="hljs-string">'../Components/ACTION.js'</span>
+
+riot.tag(<span class="hljs-string">'dropdown'</span>,
+
+  <span class="hljs-string">`&lt;div onclick="{onSelectFilter}" class="ui floating labeled icon dropdown button"&gt;
+  &lt;i class="filter icon"&gt;&lt;/i&gt;
+  &lt;span class="text"&gt;Filtrar por horas&lt;/span&gt;
+  &lt;div class="menu"&gt;
+    &lt;div class="header"&gt;
+      Chamadas de até
+    &lt;/div&gt;
+    &lt;div class="divider"&gt;&lt;/div&gt;
+    &lt;div class="item"&gt;
+      &lt;span class="description"&gt;hora atrás&lt;/span&gt;
+      &lt;span class="text"&gt;1&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="item"&gt;
+      &lt;span class="description"&gt;horas atrás&lt;/span&gt;
+      &lt;span class="text"&gt;2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="item"&gt;
+      &lt;span class="description"&gt;horas atrás&lt;/span&gt;
+      &lt;span class="text"&gt;3&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="item"&gt;
+      &lt;span class="description"&gt;horas atrás&lt;/span&gt;
+      &lt;span class="text"&gt;4&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="item"&gt;
+      &lt;span class="description"&gt;horas atrás&lt;/span&gt;
+      &lt;span class="text"&gt;5&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="item"&gt;
+      &lt;span class="description"&gt;horas atrás&lt;/span&gt;
+      &lt;span class="text"&gt;6&lt;/span&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;`</span>,
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">constructor</span> (<span class="hljs-params">options</span>) </span>{
+    <span class="hljs-keyword">this</span>.options = options
+    <span class="hljs-keyword">this</span>.value = <span class="hljs-string">''</span>
+
+    <span class="hljs-keyword">this</span>.onSelectFilter = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSelectFilter</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">let</span> selected = <span class="hljs-built_in">window</span>.$(<span class="hljs-string">'.selected &gt; .text'</span>)
+      <span class="hljs-keyword">let</span> newValue = selected.first().text()
+
+      <span class="hljs-keyword">if</span> (newValue &amp;&amp; newValue !== <span class="hljs-keyword">this</span>.value) {
+        <span class="hljs-keyword">this</span>.value = newValue
+
+        dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {<span class="hljs-string">'value'</span>: <span class="hljs-keyword">this</span>.value})
+      }
+    }
+
+    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'mount'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">window</span>.$(<span class="hljs-string">'.ui.dropdown'</span>).dropdown()
+    })
+  })</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
