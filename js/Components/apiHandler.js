@@ -29,7 +29,7 @@ export default class ApiHandler {
     let year = date.getFullYear()
     let minutes = this.dateToString(date.getMinutes())
     let hours = this.dateToString(date.getHours())
-    // DONE:170 FIX Secons Pattern 2 seconds to 02 seconds
+    // DONE:180 FIX Secons Pattern 2 seconds to 02 seconds
     let seconds = this.dateToString(date.getSeconds())
 
     dateApi.date = `${month}-${day}-${year}`
@@ -66,11 +66,12 @@ export default class ApiHandler {
         type: 'GET'
       })
     }
-
+    // TODO after an ajax call when changing btw pages, 4-5 times after the does not change anymore. Don't seem to be relationated with Ajax, maybe state change?
+    // DOING:0 change modal position and image limit size.
     ajaxCall().done(function (calls) {
       // console.log('IT WORKED!!!')
       // console.log(JSON.stringify(calls))
-      // DONE:190 return calls to Store to store update calls
+      // DONE:200 return calls to Store to store update calls
       if (calls) {
         dispatcher.dispatch(action, {'calls': calls})
       }

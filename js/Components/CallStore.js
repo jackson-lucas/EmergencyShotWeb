@@ -4,13 +4,13 @@ import ACTION from './ACTION.js'
 import ApiHandler from './ApiHandler.js'
 import '../UiComponents/app.js'
 
-// DONE:110 change origin location to center of Manaus
+// DONE:120 change origin location to center of Manaus
 
 export default class CallStore extends Store {
 
-  // DONE:80 on click link of image, show image in modal(popup like)
-  // DONE:70 create sinister's list
-  // DONE:90 set default position to Manaus and give proper default zoom to see the whole city.
+  // DONE:90 on click link of image, show image in modal(popup like)
+  // DONE:80 create sinister's list
+  // DONE:100 set default position to Manaus and give proper default zoom to see the whole city.
   constructor () {
     super()
 
@@ -62,11 +62,11 @@ export default class CallStore extends Store {
 
         // this.listener.update({ 'data': this.data })
         // This is a workaround. Correct way is by update but it's not working
-        // DONE:40 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated? maybe create our own update(dispatch).
+        // DONE:50 INVESTIGATE Why update riot.update and app.update isn't working. The update should be directly on the elements that need be updated? maybe create our own update(dispatch).
         // riot.mount('app', { 'data': this.data })
         // // console.log(this.listener)
-        // DONE:140 TEST if listener is updated
-        // TODO:50 REFACTOR app architecture use Publish/Subscribe Pattern
+        // DONE:150 TEST if listener is updated
+        // TODO:60 REFACTOR app architecture use Publish/Subscribe Pattern
         break
       case ACTION.ON_CALL_SELECTED:
         this.data.callSelected = data.call_selected
@@ -83,20 +83,20 @@ export default class CallStore extends Store {
     // if (this.timer) {
     //   window.clearInterval(this.timer)
     // }
-    // TODO:10 FIX update calls from server w/ setInterval(Solution: Promise?) is blocking UI
+    // TODO:20 FIX update calls from server w/ setInterval(Solution: Promise?) is blocking UI
     // this.timer = window.setInterval(function () {
     //   apiHandler.getEmergencyCalls(filter, lastCall)
     // }, 5000)
   }
 
   routeChanged (mode) {
-    // TODO:40 FIX when app start with table on change to map. the map is not loaded.
+    // TODO:50 FIX when app start with table on change to map. the map is not loaded.
     if (this.listener) {
       riot.update()
     } else {
       let tag = riot.mount('app', { 'data': this.data })
       this.setListener(tag[0])
     }
-    // DONE:60 INVESTIGATE should mount just on first and then update?
+    // DONE:70 INVESTIGATE should mount just on first and then update?
   }
 }
