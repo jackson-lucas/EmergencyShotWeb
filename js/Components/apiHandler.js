@@ -30,7 +30,6 @@ export default class ApiHandler {
     dateApi.date = `${month}-${day}-${year}`
     dateApi.time = `${hours}:${minutes}:${seconds}`
 
-
     return {'api_format': dateApi, 'js_format': date}
   }
 
@@ -58,13 +57,21 @@ export default class ApiHandler {
         type: 'GET'
       })
     }
-    // TODO after an ajax call when changing btw pages, 4-5 times after the does not change anymore. Don't seem to be relationated with Ajax, maybe state change?
+    // TODO:10 after an ajax call when changing btw pages, 4-5 times after the does not change anymore. Don't seem to be relationated with Ajax, maybe state change?
     ajaxCall().done(function (calls) {
       if (calls) {
         dispatcher.dispatch(action, {'calls': calls})
+        window.setTimeout(this.nextUpdate, 20000)
       }
-    }).fail(function (error) {
+    }.bind(this)).fail(function (error) {
+      console.log('error')
+      console.log(this.nextUpdate)
       dispatcher.dispatch(ACTION.ON_DATA_ERROR)
-    })
+      window.setTimeout(this.nextUpdate, 20000)
+    }.bind(this))
+  }
+
+  nextUpdate () {
+    dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': 6})
   }
 }

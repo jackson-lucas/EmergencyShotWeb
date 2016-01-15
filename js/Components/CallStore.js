@@ -4,7 +4,6 @@ import ACTION from './ACTION.js'
 import ApiHandler from './ApiHandler.js'
 import '../UiComponents/app.js'
 
-
 export default class CallStore extends Store {
 
   constructor () {
@@ -31,6 +30,7 @@ export default class CallStore extends Store {
         break
 
       case ACTION.ON_SELECT_FILTER:
+        console.log('filter selected')
         if (this.data.calls.length && this.hoursAgo === data.value) {
           this.onSelectFilter(data.value,
             this.data.calls[this.data.calls.length - 1])
@@ -51,7 +51,7 @@ export default class CallStore extends Store {
         this.data.calls = data.calls
         riot.update()
 
-        // TODO:60 REFACTOR app architecture use Publish/Subscribe Pattern
+        // TODO:50 REFACTOR app architecture use Publish/Subscribe Pattern
         break
       case ACTION.ON_CALL_SELECTED:
         this.data.callSelected = data.call_selected
@@ -67,7 +67,7 @@ export default class CallStore extends Store {
   }
 
   routeChanged (mode) {
-    // TODO:50 FIX when app start with table on change to map. the map is not loaded.
+    // TODO:40 FIX when app start with table on change to map. the map is not loaded.
     if (this.listener) {
       riot.update()
     } else {

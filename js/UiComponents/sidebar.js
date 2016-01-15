@@ -22,9 +22,9 @@ riot.tag('sidebar',
   <div class="bottom aligned item">Copyright (C) 2015</div>
 </div>`,
 
-  // TODO:70 [LOW] change theme to a more proper way for emergency call system
+  // TODO:60 [LOW] change theme to a more proper way for emergency call system
   // TODO:0 Discover why on route change, app is not updated after a second dropdown choice
-  // TODO:10 THINK eliminate filter and give a pattern?
+  // TODO:20 THINK eliminate filter and give a pattern?
   function constructor (options) {
     this.options = options
   }

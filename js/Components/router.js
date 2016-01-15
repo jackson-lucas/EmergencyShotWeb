@@ -16,6 +16,8 @@ export default {
     page('/', this.map)
     page('/table', this.table)
     page()
+
+    dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': 6})
   },
 
   map: function () {

@@ -4,9 +4,9 @@ import ACTION from '../Components/ACTION.js'
 
 riot.tag('dropdown',
 
-  `<div onclick="{onSelectFilter}" class="ui floating labeled icon dropdown button">
+  `<div onclick="{onSelectFilter}" class="ui floating labeled icon disabled dropdown button">
   <i class="filter icon"></i>
-  <span class="text">Filtrar por horas</span>
+  <span class="text">Até 6 horas atrás</span>
   <div class="menu">
     <div class="header">
       Chamadas de até
@@ -32,7 +32,7 @@ riot.tag('dropdown',
       <span class="description">horas atrás</span>
       <span class="text">5</span>
     </div>
-    <div class="item">
+    <div class="item active selected" data-value="default">
       <span class="description">horas atrás</span>
       <span class="text">6</span>
     </div>
