@@ -39,7 +39,7 @@ riot.tag('calls-table',
 
     this.setSinistersName = function setSinistersName () {
       let calls = this.options.calls
-
+      
       for (let index = 0; index < calls.length; index++) {
         calls[index].sinistro = SINISTER[calls[index].id_sinistro - 1]
       }

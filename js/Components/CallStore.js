@@ -31,7 +31,7 @@ export default class CallStore extends Store {
 
       case ACTION.ON_SELECT_FILTER:
         console.log('filter selected')
-        if (this.data.calls.length && this.hoursAgo === data.value) {
+        if (this.data.calls.length) {
           this.onSelectFilter(data.value,
             this.data.calls[this.data.calls.length - 1])
         } else {

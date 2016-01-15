@@ -148,6 +148,8 @@ Router should be inside store? since store is the one handling logic</p>
     page(<span class="hljs-string">'/'</span>, <span class="hljs-keyword">this</span>.map)
     page(<span class="hljs-string">'/table'</span>, <span class="hljs-keyword">this</span>.table)
     page()
+
+    dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {<span class="hljs-string">'value'</span>: <span class="hljs-number">6</span>})
   },
 
   map: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{

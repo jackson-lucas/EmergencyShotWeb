@@ -35,13 +35,14 @@ export default class ApiHandler {
 
   getEmergencyCalls (hoursAgo, lastCall) {
     let start, action
-
+    console.log('lastCall')
+    console.log(lastCall)
     if (lastCall) {
       action = ACTION.ON_DATA_UPDATE
       start = {
         api_format: {
-          date: lastCall.date,
-          time: lastCall.time
+          date: lastCall.data,
+          time: lastCall.horario
         }
       }
     } else {
@@ -59,13 +60,13 @@ export default class ApiHandler {
     }
     // TODO:10 after an ajax call when changing btw pages, 4-5 times after the does not change anymore. Don't seem to be relationated with Ajax, maybe state change?
     ajaxCall().done(function (calls) {
-      if (calls) {
-        dispatcher.dispatch(action, {'calls': calls})
-        window.setTimeout(this.nextUpdate, 20000)
+      console.log('calls')
+      console.log(calls)
+      if (calls.length && calls != 'ERROR') {
+        dispatcher.dispatch(ACTION.ON_DATA_UPDATE, {'calls': calls})
       }
+      window.setTimeout(this.nextUpdate, 20000)
     }.bind(this)).fail(function (error) {
-      console.log('error')
-      console.log(this.nextUpdate)
       dispatcher.dispatch(ACTION.ON_DATA_ERROR)
       window.setTimeout(this.nextUpdate, 20000)
     }.bind(this))

@@ -159,7 +159,7 @@ riot.tag(<span class="hljs-string">'calls-table'</span>,
 
     <span class="hljs-keyword">this</span>.setSinistersName = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSinistersName</span> (<span class="hljs-params"></span>) </span>{
       <span class="hljs-keyword">let</span> calls = <span class="hljs-keyword">this</span>.options.calls
-
+      
       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; calls.length; index++) {
         calls[index].sinistro = SINISTER[calls[index].id_sinistro - <span class="hljs-number">1</span>]
       }

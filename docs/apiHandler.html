@@ -162,19 +162,19 @@
     dateApi.date = <span class="hljs-string">`<span class="hljs-subst">${month}</span>-<span class="hljs-subst">${day}</span>-<span class="hljs-subst">${year}</span>`</span>
     dateApi.time = <span class="hljs-string">`<span class="hljs-subst">${hours}</span>:<span class="hljs-subst">${minutes}</span>:<span class="hljs-subst">${seconds}</span>`</span>
 
-
     <span class="hljs-keyword">return</span> {<span class="hljs-string">'api_format'</span>: dateApi, <span class="hljs-string">'js_format'</span>: date}
   }
 
   getEmergencyCalls (hoursAgo, lastCall) {
     <span class="hljs-keyword">let</span> start, action
-
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'lastCall'</span>)
+    <span class="hljs-built_in">console</span>.log(lastCall)
     <span class="hljs-keyword">if</span> (lastCall) {
       action = ACTION.ON_DATA_UPDATE
       start = {
         api_format: {
-          date: lastCall.date,
-          time: lastCall.time
+          date: lastCall.data,
+          time: lastCall.horario
         }
       }
     } <span class="hljs-keyword">else</span> {
@@ -200,17 +200,25 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>TODO after an ajax call when changing btw pages, 4-5 times after the does not change anymore. Don’t seem to be relationated with Ajax, maybe state change?</p>
+              <p>TODO:10 after an ajax call when changing btw pages, 4-5 times after the does not change anymore. Don’t seem to be relationated with Ajax, maybe state change?</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    ajaxCall().done(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">calls</span>) </span>{
-      <span class="hljs-keyword">if</span> (calls) {
-        dispatcher.dispatch(action, {<span class="hljs-string">'calls'</span>: calls})
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'calls'</span>)
+      <span class="hljs-built_in">console</span>.log(calls)
+      <span class="hljs-keyword">if</span> (calls.length &amp;&amp; calls != <span class="hljs-string">'ERROR'</span>) {
+        dispatcher.dispatch(ACTION.ON_DATA_UPDATE, {<span class="hljs-string">'calls'</span>: calls})
       }
-    }).fail(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>{
+      <span class="hljs-built_in">window</span>.setTimeout(<span class="hljs-keyword">this</span>.nextUpdate, <span class="hljs-number">20000</span>)
+    }.bind(<span class="hljs-keyword">this</span>)).fail(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>{
       dispatcher.dispatch(ACTION.ON_DATA_ERROR)
-    })
+      <span class="hljs-built_in">window</span>.setTimeout(<span class="hljs-keyword">this</span>.nextUpdate, <span class="hljs-number">20000</span>)
+    }.bind(<span class="hljs-keyword">this</span>))
+  }
+
+  nextUpdate () {
+    dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {<span class="hljs-string">'value'</span>: <span class="hljs-number">6</span>})
   }
 }</pre></div></div>
             

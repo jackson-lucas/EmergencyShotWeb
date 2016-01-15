@@ -124,7 +124,6 @@
 <span class="hljs-keyword">import</span> ApiHandler <span class="hljs-keyword">from</span> <span class="hljs-string">'./ApiHandler.js'</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">'../UiComponents/app.js'</span>
 
-
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CallStore</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Store</span> </span>{
 
   <span class="hljs-keyword">constructor</span> () {
@@ -164,7 +163,8 @@
         <span class="hljs-keyword">break</span>
 
       <span class="hljs-keyword">case</span> ACTION.ON_SELECT_FILTER:
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.data.calls.length &amp;&amp; <span class="hljs-keyword">this</span>.hoursAgo === data.value) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'filter selected'</span>)
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.data.calls.length) {
           <span class="hljs-keyword">this</span>.onSelectFilter(data.value,
             <span class="hljs-keyword">this</span>.data.calls[<span class="hljs-keyword">this</span>.data.calls.length - <span class="hljs-number">1</span>])
         } <span class="hljs-keyword">else</span> {
@@ -193,7 +193,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>TODO:60 REFACTOR app architecture use Publish/Subscribe Pattern</p>
+              <p>TODO:50 REFACTOR app architecture use Publish/Subscribe Pattern</p>
 
             </div>
             
@@ -222,7 +222,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>TODO:50 FIX when app start with table on change to map. the map is not loaded.</p>
+              <p>TODO:40 FIX when app start with table on change to map. the map is not loaded.</p>
 
             </div>
             
