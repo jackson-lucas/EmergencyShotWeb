@@ -11,8 +11,6 @@ import ACTION from './ACTION.js'
 
 export default {
   initialize: function () {
-    // DONE:230 [TEST] if connection with dispatcher and store.
-
     page.base('/#!')
 
     page('/', this.map)
@@ -21,12 +19,10 @@ export default {
   },
 
   map: function () {
-    // console.log('map')
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': true})
   },
 
   table: function () {
-    // console.log('table')
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': false})
   }
 }
