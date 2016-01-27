@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Dispatcher.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="Action.html">
+                  Action.js
+                </a>
+              
+                
+                <a class="source" href="CallStore.html">
+                  CallStore.js
+                </a>
+              
+                
+                <a class="source" href="Dispatcher.html">
+                  Dispatcher.js
+                </a>
+              
+                
+                <a class="source" href="SINISTER.html">
+                  SINISTER.js
+                </a>
+              
+                
+                <a class="source" href="Store.html">
+                  Store.js
+                </a>
+              
+                
+                <a class="source" href="apiHandler.html">
+                  apiHandler.js
+                </a>
+              
+                
+                <a class="source" href="router.html">
+                  router.js
+                </a>
+              
+                
+                <a class="source" href="app.html">
+                  app.js
+                </a>
+              
+                
+                <a class="source" href="callstable.html">
+                  callstable.js
+                </a>
+              
+                
+                <a class="source" href="content.html">
+                  content.js
+                </a>
+              
+                
+                <a class="source" href="dropdown.html">
+                  dropdown.js
+                </a>
+              
+                
+                <a class="source" href="imageButton.html">
+                  imageButton.js
+                </a>
+              
+                
+                <a class="source" href="imageModal.html">
+                  imageModal.js
+                </a>
+              
+                
+                <a class="source" href="map.html">
+                  map.js
+                </a>
+              
+                
+                <a class="source" href="sidebar.html">
+                  sidebar.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Dispatcher.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <p>This is a singleton cause there must be only one Dispatcher for everyone.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">let</span> dispatcher = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> stores = []
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addStore</span> (<span class="hljs-params">store</span>) </span>{
+    stores.push(store)
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on</span> (<span class="hljs-params">action, data</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; stores.length; index++) {
+      stores[index].dispatch(action, data)
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span> (<span class="hljs-params">action, data</span>) </span>{
+    on(action, data)
+  }
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-string">'on'</span>: on,
+    <span class="hljs-string">'addStore'</span>: addStore,
+    <span class="hljs-string">'dispatch'</span>: dispatch
+  }
+})()
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> dispatcher</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

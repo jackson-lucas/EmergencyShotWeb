@@ -11,22 +11,20 @@ import ACTION from './ACTION.js'
 
 export default {
   initialize: function () {
-    // DONE:220 [TEST] if connection with dispatcher and store.
-
     page.base('/#!')
 
     page('/', this.map)
     page('/table', this.table)
     page()
+
+    dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': 6})
   },
 
   map: function () {
-    console.log('map')
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': true})
   },
 
   table: function () {
-    console.log('table')
     dispatcher.dispatch(ACTION.ON_ROUTE_CHANGE, {'show_map': false})
   }
 }

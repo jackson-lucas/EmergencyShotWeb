@@ -14,7 +14,4 @@ riot.tag('content',
 
   function constructor (options) {
     this.options = options
-    console.log('content')
-    console.log(options)
-    console.log(options.data)
   })

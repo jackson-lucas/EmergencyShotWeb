@@ -4,9 +4,9 @@ import ACTION from '../Components/ACTION.js'
 
 riot.tag('dropdown',
 
-  `<div onclick="{onSelectFilter}" class="ui floating labeled icon dropdown button">
+  `<div onclick="{onSelectFilter}" class="ui floating labeled icon disabled dropdown button">
   <i class="filter icon"></i>
-  <span class="text">Filtrar por horas</span>
+  <span class="text">Até 6 horas atrás</span>
   <div class="menu">
     <div class="header">
       Chamadas de até
@@ -32,15 +32,13 @@ riot.tag('dropdown',
       <span class="description">horas atrás</span>
       <span class="text">5</span>
     </div>
-    <div class="item">
+    <div class="item active selected" data-value="default">
       <span class="description">horas atrás</span>
       <span class="text">6</span>
     </div>
 
   </div>
 </div>`,
-// DONE:50 FIX LOW filtrar horas isnt updated with the value(dropdown)
-// DONE:30 FIX LOW filtrar horas is reset with changed path(map/table)
   function constructor (options) {
     this.options = options
     this.value = ''
@@ -53,14 +51,10 @@ riot.tag('dropdown',
         this.value = newValue
 
         dispatcher.dispatch(ACTION.ON_SELECT_FILTER, {'value': this.value})
-        console.log('Dispatched: ' + ACTION.ON_SELECT_FILTER)
       }
     }
 
     this.on('mount', function () {
       window.$('.ui.dropdown').dropdown()
-
-    // DONE:180 [FIX] onclick event must be on RiotJS way. jQuery's way do not avoid collision.
-    // DONE:200 dispatch ON_SELECT_FILTER with the time to be queried.
     })
   })

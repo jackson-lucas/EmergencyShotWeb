@@ -1,6 +1,6 @@
 {
-  "name": "emergency_shot_web",
-  "version": "0.0.1",
+  "name": "bombeiros_sos_web_app",
+  "version": "0.9.0",
   "description": "App for Firefighter Attendants",
   "main": "bundle.js",
   "devDependencies": {
@@ -8,7 +8,7 @@
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "webpack": "^1.12.8",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
     "production": "webpack -p",

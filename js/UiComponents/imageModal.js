@@ -1,5 +1,4 @@
 import riot from 'riot'
-// DONE:130 create table dynamically
 
 riot.tag('image-modal',
 
@@ -9,7 +8,7 @@ riot.tag('image-modal',
     {options.call.sinistro}
   </div>
   <div class="image content">
-    <div class="ui big image">
+    <div class="ui medium image">
       <img src="{options.call.midia}">
     </div>
     <div class="description">
@@ -22,6 +21,4 @@ riot.tag('image-modal',
 
   function constructor (options) {
     this.options = options
-    console.log(options)
-    console.log('DFDFSDFSDFSDFSDFSD')
   })

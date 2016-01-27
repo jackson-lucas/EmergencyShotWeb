@@ -16,3 +16,8 @@
   bottom: 0;
   position: fixed;
 }
+
+#modal {
+  margin-top: 14px !important;
+  top: 0px !important;
+}
